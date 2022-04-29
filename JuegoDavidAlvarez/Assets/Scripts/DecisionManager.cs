@@ -40,6 +40,8 @@ public class DecisionManager : MonoBehaviour
     //viejaMisteriosa, escena2
     //Cambia a si si hablas con la viejaMisteriosa en la escena2
 
+    //AQUI SE AÑADEN LAS VARIABLES
+
     void Start()
     {
         listaVariables.Add("huevoGallina"); //0
