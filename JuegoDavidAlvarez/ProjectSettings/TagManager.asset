@@ -18,6 +18,14 @@ TagManager:
   - chicaTienda2
   - conejito
   - viejaMisteriosa2
+  - sirena3
+  - pirata3
+  - endDayEvent
+  - chicaTienda3
+  - standScene3
+  - Duplicate
+  - logDuplicate1
+  - logDuplicate2
   layers:
   - Default
   - TransparentFX

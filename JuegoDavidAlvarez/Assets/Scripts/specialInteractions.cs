@@ -8,6 +8,7 @@ public class specialInteractions : MonoBehaviour
     private GameObject player;
     private GameObject spawnManager;
     private GameObject decisionManager;
+    private GameObject duplicate;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class specialInteractions : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         spawnManager = GameObject.FindWithTag("spawnManager");
         decisionManager = GameObject.FindWithTag("DecisionManager");
+        duplicate = GameObject.FindWithTag("Duplicate");
     }
 
     // Update is called once per frame
@@ -36,6 +38,20 @@ public class specialInteractions : MonoBehaviour
                 else
                 {
                     Debug.Log("No puedes disparar");
+                }
+
+                if(this.tag == "standScene3" && player.GetComponent<PlayerController>().canPlayDuplicateGame)
+                {
+                    //player.GetComponent<PlayerController>().canShoot = true;
+                    player.transform.position = new Vector3(114f, 57f, player.transform.position.z);
+                    //spawnManager.GetComponent<SpawnManager>().enabled = true;
+                    Debug.Log("A colaborar con el duplicado!");
+                    duplicate.transform.position = new Vector3(120f, 57f, player.transform.position.z);
+                    player.GetComponent<PlayerController>().playingDuplicateGame = true;
+                }
+                else
+                {
+                    Debug.Log("No puedes jugar a Duplicator");
                 }
 
                 if(this.tag == "conejito")

@@ -56,8 +56,15 @@ public class NPCDialog : MonoBehaviour
                 if(!player.GetComponent<PlayerController>().endedShootGame)
                 {
                     player.GetComponent<PlayerController>().canPlayShootGame = true;
-                }
-                
+                } 
+            }
+
+            if(this.tag == "chicaTienda3")
+            {
+                if(!player.GetComponent<PlayerController>().endedDuplicateGame)
+                {
+                    player.GetComponent<PlayerController>().canPlayDuplicateGame = true;
+                } 
             }
 
             if(this.tag == "viejaMisteriosa2")
@@ -69,6 +76,25 @@ public class NPCDialog : MonoBehaviour
                 
                 decisionManager.GetComponent<DecisionManager>().hablaViejaEscena2 = "Si";
                 decisionManager.GetComponent<DecisionManager>().actualizarValor("hablaViejaEscena2", decisionManager.GetComponent<DecisionManager>().hablaViejaEscena2);
+            }
+
+            if(this.tag == "sirena3")
+            {
+                if(decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata != "Si")
+                {
+                    inkManager.GetComponent<InkManager>().peopleTalked --;
+                    Debug.Log("Se mueve el objeto "+gameObject.tag.ToString());
+                    //gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
+                    gameObject.transform.Translate(-7,0,0);
+                }
+                
+                decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata = "Si";
+                decisionManager.GetComponent<DecisionManager>().actualizarValor("sirenaHablaPirata", decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata);
+            }
+
+            if(this.tag == "pirata3" && decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata == "No")
+            {
+                Destroy(GameObject.FindWithTag("sirena3"));
             }
 
         }

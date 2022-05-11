@@ -1,6 +1,7 @@
 using Ink.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InkManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class InkManager : MonoBehaviour
     //Variable que comprueba si ya he interactuado con un personaje al menos una vez
     //Permite que no se repitan los dialogos con decisiones
     public bool visited;
+    private string personTag;
 
 
     void Start()
@@ -41,6 +43,7 @@ public class InkManager : MonoBehaviour
     public void StartStory(TextAsset inkJsonAsset, string nomVar, bool visited, string personTag)
     {
         this.visited = visited;
+        this.personTag = personTag;
         Debug.Log("personaTag es: "+personTag);
         //Las diferentes story se estaban entrelazando mal entre personajes si no les instanciaba la historia cada vez
         _story = new Story(inkJsonAsset.text);
@@ -51,7 +54,7 @@ public class InkManager : MonoBehaviour
             _story.variablesState[nomVar] = decisionManager.GetComponent<DecisionManager>().getValue(nomVar);
         }
         
-        if(personTag != "evento")
+        if(personTag != "evento" && personTag != "endDayEvent")
         {
             if(!visited)
             {
@@ -64,7 +67,7 @@ public class InkManager : MonoBehaviour
                 if(personTag == "mujerPosada")
                 {
                     //Debug.Log("Es la mujer de la posada");
-                    if((peopleTalked == 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || player.GetComponent<PlayerController>().canFinishScene)
+                    if((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || player.GetComponent<PlayerController>().canFinishScene)
                     {
                         //Debug.Log("Inicia TodosHablados");
                         _story.ChoosePathString("todosHablados");
@@ -119,20 +122,30 @@ public class InkManager : MonoBehaviour
         textContainer.SetActive(false);
         player.GetComponent<PlayerController>().canMove = true;
         //Si el dialogo maneja una variable que se quiere registrar
-        if(nomVariable != "")
+        if(personTag == "endDayEvent")
         {
-            //solo ocurre la primera vez que se habla con el personaje
-            if(!visited)
-            {
-                if(_story.variablesState[nomVariable].ToString() != "Null")
-                {    
-                    Debug.Log(_story.variablesState[nomVariable]);
-                    valorVariable = _story.variablesState[nomVariable].ToString();
-                    //registro de la variable en DecisionManager.cs
-                    decisionManager.GetComponent<DecisionManager>().actualizarValor(nomVariable,valorVariable);
-                }
-            }     
+            decisionManager.GetComponent<DecisionManager>().sceneActual++;
+            SceneManager.LoadSceneAsync("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual.ToString());
         }
+        else
+        {
+            if(nomVariable != "")
+            {
+                //solo ocurre la primera vez que se habla con el personaje
+                if(!visited)
+                {
+                    if(_story.variablesState[nomVariable].ToString() != "Null")
+                    {    
+                        Debug.Log(_story.variablesState[nomVariable]);
+                        valorVariable = _story.variablesState[nomVariable].ToString();
+                        //registro de la variable en DecisionManager.cs
+                        decisionManager.GetComponent<DecisionManager>().actualizarValor(nomVariable,valorVariable);
+                    }
+                }     
+            }
+        }
+        
+
     }
     private void DisplayChoices()
     {

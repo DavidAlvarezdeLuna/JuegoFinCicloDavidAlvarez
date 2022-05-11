@@ -6,6 +6,7 @@ public class DecisionManager : MonoBehaviour
 {
     //public string[] listaVariables = ["huevoGallina","marMontania"];
     //public string[] listaValores = ["",""];
+    public int sceneActual = 1;
     ArrayList listaVariables = new ArrayList();
     ArrayList listaValores = new ArrayList();
     
@@ -40,7 +41,32 @@ public class DecisionManager : MonoBehaviour
     //viejaMisteriosa, escena2
     //Cambia a si si hablas con la viejaMisteriosa en la escena2
 
+    //6
+    public string sirenaHablaPirata = "No";
+    //Pirata, escena3
+    //Cambia si hablas primero con la sirena o el pirata en la escena3
+
+    //7
+    public string superadasDuplicator = "";
+    //juego Duplicator, escena3
+    //fases superadas en el juego del duplicator
+
     //AQUI SE AÑADEN LAS VARIABLES
+
+
+    public static DecisionManager Instance;
+
+    private void Awake() 
+    {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -49,14 +75,19 @@ public class DecisionManager : MonoBehaviour
         listaVariables.Add("targetHit"); //2
         listaVariables.Add("guardaSecreto"); //3
         listaVariables.Add("conejitosEncontrados"); //4
-        listaVariables.Add("hablaViejaEscena2"); //4
+        listaVariables.Add("hablaViejaEscena2"); //5
+        listaVariables.Add("sirenaHablaPirata"); //6
+        listaVariables.Add("superadasDuplicator"); //7
+        
 
         listaValores.Add("");
         listaValores.Add("");
+        listaValores.Add("0");
         listaValores.Add("");
-        listaValores.Add("");
-        listaValores.Add("");
+        listaValores.Add("0");
         listaValores.Add("No");
+        listaValores.Add("No");
+        listaValores.Add("");
     }
 
 

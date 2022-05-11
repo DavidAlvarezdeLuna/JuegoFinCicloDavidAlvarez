@@ -1,0 +1,26 @@
+-> start
+
+== start ===
+...
+.....
+Necesito pensar un poco estoy
+¿Que le esta pasando a la anciana? No me cuadra la forma de expresarse de los vecinos...
+A decir verdad, muchas cosas no me cuadran de este pueblecito, como que este completamente incomunicado
+Ni siquiera aparece en los mapas...
+O esa llamada de auxilio que me guió hasta aqui...
+Podria pensar en mas cosas extrañas, por ejemplo...
+***¿Duplicator? ¿Armas que lanzan estrellas?
+-> continue
+***¿Una chica que no sale del agua?
+-> continue
+***¿Que cene ayer? No era pollo
+-> continue
+***El chico de la entrada no recibe visitas
+-> continue
+
+=== continue ===
+...
+.....
+No entiendo nada, pero pienso descubrir que pasa aqui
+Saldre esta noche a investigar, cuando estén todos dormidos
+-> END
