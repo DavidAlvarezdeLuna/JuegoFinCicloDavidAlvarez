@@ -124,6 +124,7 @@ public class InkManager : MonoBehaviour
         //Si el dialogo maneja una variable que se quiere registrar
         if(personTag == "endDayEvent")
         {
+            //CAMBIO DE ESCENA
             decisionManager.GetComponent<DecisionManager>().sceneActual++;
             SceneManager.LoadSceneAsync("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual.ToString());
         }

@@ -26,6 +26,8 @@ TagManager:
   - Duplicate
   - logDuplicate1
   - logDuplicate2
+  - creditosPanel
+  - meterUsuario
   layers:
   - Default
   - TransparentFX

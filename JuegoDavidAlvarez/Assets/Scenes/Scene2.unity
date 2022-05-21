@@ -6292,6 +6292,7 @@ MonoBehaviour:
   conejitosEncontrados: 0
   hablaViejaEscena2: No
   sirenaHablaPirata: No
+  superadasDuplicator: 
 --- !u!4 &237948023
 Transform:
   m_ObjectHideFlags: 0
@@ -77648,7 +77649,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8962361688994913158, guid: 7f917e74267b03340887db6789be20b3, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8962361688994913158, guid: 7f917e74267b03340887db6789be20b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87210,7 +87211,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6057294047805821415, guid: 1faf3cf2bc4daca4f9d01c2a0032020d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6057294047805821415, guid: 1faf3cf2bc4daca4f9d01c2a0032020d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87340,7 +87341,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Continuar
 --- !u!222 &1145622301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -87953,7 +87954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535699206628774121, guid: 26016c78440901f438bcd827ac3c9152, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1535699206628774121, guid: 26016c78440901f438bcd827ac3c9152, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88406,7 +88407,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2148815574344272664, guid: 6a5fe34e624ff2f45aa585e21df0ca4d, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2148815574344272664, guid: 6a5fe34e624ff2f45aa585e21df0ca4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88743,7 +88744,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1916220538
 PrefabInstance:
@@ -88754,7 +88755,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7077814819533952136, guid: 5af21b4720ff9e84e9cbc1de0b8bf440, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7077814819533952136, guid: 5af21b4720ff9e84e9cbc1de0b8bf440, type: 3}
       propertyPath: m_LocalPosition.x

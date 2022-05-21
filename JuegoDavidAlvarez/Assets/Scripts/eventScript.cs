@@ -46,11 +46,7 @@ public class eventScript : MonoBehaviour
                     player.GetComponent<PlayerController>().canMove = false;
                     inkManager.GetComponent<InkManager>().StartStory(inkJsonAsset, "", false, "endDayEvent");
                     player.GetComponent<PlayerController>().canFinishScene = false;
-                    Destroy(this);
-                    //AQUI CAMBIO DE ESCENA
-                    //SceneManager.LoadScene("Scene2");
-                    
-                    
+                    Destroy(this);                    
                 }
                 else
                 {
