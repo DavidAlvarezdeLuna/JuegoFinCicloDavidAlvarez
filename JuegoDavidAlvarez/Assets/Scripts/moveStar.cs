@@ -8,6 +8,7 @@ public class moveStar : MonoBehaviour
     public float speed = 8;
     private GameObject player;
     private Animator anim;
+    public Joystick joystick;
     private string direccion;
 
     // Start is called before the first frame update
@@ -16,7 +17,8 @@ public class moveStar : MonoBehaviour
         
         player = GameObject.FindWithTag("Player");
         anim = player.GetComponent<Animator>();
-        if(anim.GetFloat("Horizontal") > 0)
+        joystick = FindObjectOfType<Joystick>();
+        /*if(anim.GetFloat("Horizontal") > 0)
         {
             direccion = "der";
         }
@@ -31,7 +33,30 @@ public class moveStar : MonoBehaviour
         if(anim.GetFloat("Vertical") < 0)
         {
             direccion = "aba";
+        }*/
+        Debug.Log(joystick.Horizontal.ToString()+" "+joystick.Vertical.ToString());
+
+        if(joystick.Horizontal > 0f && joystick.Horizontal > joystick.Vertical)
+        {
+            direccion = "der";
         }
+        if(joystick.Horizontal < 0f &&  joystick.Horizontal < joystick.Vertical)
+        {
+            direccion = "izq";
+        }
+        if(joystick.Vertical > 0f &&  joystick.Horizontal < joystick.Vertical)
+        {
+            direccion = "arr";
+        }
+        if(joystick.Vertical < 0f &&  joystick.Horizontal > joystick.Vertical)
+        {
+            direccion = "aba";
+        }
+        if(joystick.Vertical == 0f && joystick.Horizontal == 0f)
+        {
+            direccion = "arr";
+        }
+
     }
 
     // Update is called once per frame

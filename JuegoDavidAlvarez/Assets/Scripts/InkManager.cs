@@ -18,6 +18,10 @@ public class InkManager : MonoBehaviour
     [SerializeField] private GameObject npc;
 
     private GameObject decisionManager;
+    private GameObject controllerCanvas;
+    public Joystick joystick;
+    private GameObject joyButtonA;
+
 
     //Para los dialogos que registran una variable, me facilita la interaccion entre unity e ink, para almacenar decisiones
     public string nomVariable;
@@ -38,6 +42,9 @@ public class InkManager : MonoBehaviour
     void Start()
     {
         decisionManager = GameObject.FindWithTag("DecisionManager");
+        controllerCanvas = GameObject.FindWithTag("controllerCanvas");
+        joystick = FindObjectOfType<Joystick>();
+        joyButtonA = GameObject.FindWithTag("buttonB");
     }
 
     public void StartStory(TextAsset inkJsonAsset, string nomVar, bool visited, string personTag)
@@ -67,7 +74,7 @@ public class InkManager : MonoBehaviour
                 if(personTag == "mujerPosada")
                 {
                     //Debug.Log("Es la mujer de la posada");
-                    if((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || player.GetComponent<PlayerController>().canFinishScene)
+                    if(((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || (SceneManager.GetActiveScene().name == "Scene1" && peopleTalked >= 7)) && !player.GetComponent<PlayerController>().canFinishScene)
                     {
                         //Debug.Log("Inicia TodosHablados");
                         _story.ChoosePathString("todosHablados");
@@ -91,8 +98,9 @@ public class InkManager : MonoBehaviour
             }
         }
         
-        
         textContainer.SetActive(true);
+        //joyButtonA.GetComponent<joystickController>().pressed = false;
+        //controllerCanvas.SetActive(false);
         DisplayNextLine();
         Debug.Log("peopleTalked: "+peopleTalked);
     }
@@ -120,6 +128,7 @@ public class InkManager : MonoBehaviour
     private void EndStory()
     {
         textContainer.SetActive(false);
+        //controllerCanvas.SetActive(true);
         player.GetComponent<PlayerController>().canMove = true;
         //Si el dialogo maneja una variable que se quiere registrar
         if(personTag == "endDayEvent")

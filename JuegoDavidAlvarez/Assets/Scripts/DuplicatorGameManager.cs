@@ -8,6 +8,7 @@ public class DuplicatorGameManager : MonoBehaviour
     private GameObject log2;
     private GameObject player;
     private GameObject decisionManager;
+    private GameObject joyButtonB;
     private int phase;
     private bool phaseDone;
     private int interval = 10;
@@ -18,6 +19,7 @@ public class DuplicatorGameManager : MonoBehaviour
         log2 = GameObject.FindWithTag("logDuplicate2");
         player = GameObject.FindWithTag("Player");
         decisionManager = GameObject.FindWithTag("DecisionManager");
+        joyButtonB = GameObject.FindWithTag("buttonB");
         
         phase = 0;
     }
@@ -68,34 +70,18 @@ public class DuplicatorGameManager : MonoBehaviour
                         protaPos = new Vector3(7, 3, player.transform.position.z);
                         player.transform.position = protaPos;
                         player.GetComponent<PlayerController>().canPlayDuplicateGame = false;
+                        player.GetComponent<PlayerController>().playingDuplicateGame = false; 
                         player.GetComponent<PlayerController>().endedDuplicateGame = true;
                         break;
 
                     default:
                         Debug.Log("fase "+phase+" completada");
-                        break;
-
-                    /*case 3:
-                        spawnPos = new Vector3(109, -3, -1);
-                        Instantiate(target, spawnPos, target.transform.rotation);
-                        break;
-
-                    case 4:
-                        spawnPos = new Vector3(99, 11 , -1);
-                        Instantiate(target, spawnPos, target.transform.rotation);
-                        break;
-
-                    case 5:
-                        spawnPos = new Vector3(99, 11 , -1);
-                        Instantiate(target, spawnPos, target.transform.rotation);
-                        break;*/
-
-                    
+                        break;                    
                 }
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (joyButtonB.GetComponent<joystickController>().pressed)
         {
             if(player.GetComponent<PlayerController>().playingDuplicateGame)
             {
@@ -104,6 +90,7 @@ public class DuplicatorGameManager : MonoBehaviour
                 protaPos = new Vector3(7, 3, player.transform.position.z);
                 player.transform.position = protaPos;
                 player.GetComponent<PlayerController>().canPlayDuplicateGame = false;
+                player.GetComponent<PlayerController>().playingDuplicateGame = false;  
                 player.GetComponent<PlayerController>().endedDuplicateGame = true;                
 
             }

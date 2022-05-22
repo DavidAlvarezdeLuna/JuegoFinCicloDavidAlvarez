@@ -12,8 +12,8 @@ public class NPCDialog : MonoBehaviour
     [SerializeField] private Image dialogueImage;
     [SerializeField] private Sprite characterPortrait;
     [SerializeField] private TextAsset inkJsonAsset;
-
     [SerializeField] public String nomVariable;
+    private GameObject joyButtonA;
 
     private bool isPlayerInRange;
     private bool didDialogueStart;
@@ -33,13 +33,13 @@ public class NPCDialog : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         inkManager = GameObject.FindWithTag("InkManager");
         decisionManager = GameObject.FindWithTag("DecisionManager");
-        
+        joyButtonA = GameObject.FindWithTag("buttonA");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerInRange && Input.GetKeyDown(KeyCode.Z))
+        if(isPlayerInRange && joyButtonA.GetComponent<joystickController>().pressed)
         {
             if(player.GetComponent<PlayerController>().canMove)
             {

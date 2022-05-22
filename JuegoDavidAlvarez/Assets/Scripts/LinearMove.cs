@@ -7,7 +7,6 @@ public class LinearMove : MonoBehaviour
     private float speed = 3;
     private string direction;
     private int targetHit;
-
     private GameObject spawnManager;
 
     // Start is called before the first frame update

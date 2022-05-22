@@ -28,6 +28,11 @@ TagManager:
   - logDuplicate2
   - creditosPanel
   - meterUsuario
+  - buttonA
+  - buttonB
+  - controllerCanvas
+  - panelError
+  - meterPass
   layers:
   - Default
   - TransparentFX

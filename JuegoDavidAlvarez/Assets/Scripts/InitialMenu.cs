@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Firebase;
+using Firebase.Auth;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -9,6 +12,14 @@ public class InitialMenu : MonoBehaviour
 
     //[SerializeField] private GameObject creditosPanel;
     //[SerializeField] private GameObject resultadosPanel;
+
+    public DependencyStatus dependencyStatus;
+    public FirebaseAuth auth;    
+    public FirebaseUser User;
+
+    [SerializeField] private GameObject textUsu;
+    [SerializeField] private GameObject textPass;
+    [SerializeField] private GameObject errMessage;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +31,31 @@ public class InitialMenu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Awake()
+    {
+        //Check that all of the necessary dependencies for Firebase are present on the system
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            dependencyStatus = task.Result;
+            if (dependencyStatus == DependencyStatus.Available)
+            {
+                //If they are avalible Initialize Firebase
+                InitializeFirebase();
+            }
+            else
+            {
+                Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
+            }
+        });
+    }
+
+    private void InitializeFirebase()
+    {
+        Debug.Log("Setting up Firebase Auth");
+        //Set the authentication instance object
+        auth = FirebaseAuth.DefaultInstance;
     }
 
     public void loginUser([SerializeField] GameObject buttonsContainer)
@@ -45,17 +81,31 @@ public class InitialMenu : MonoBehaviour
         //INTRODUCIR EN FIREBASE EL USUARIO NUEVO
         //LO TENDRE ALMACENADO HASTA QUE SE CAMBIE
 
-        for(int i=0; i<buttonsContainer.transform.childCount; i++)
-        {
-            if(buttonsContainer.transform.GetChild(i).gameObject.tag == "meterUsuario")
+        //if(textUsu.GetComponent<Text>().text.Length > 0 && textPass.GetComponent<Text>().text.Length >= 8)
+        //{
+            //var RegisterTask = auth.CreateUserWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text);
+            //Wait until the task completes
+            //yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
+
+            //User = RegisterTask.Result;
+
+            for(int i=0; i<buttonsContainer.transform.childCount; i++)
             {
-                buttonsContainer.transform.GetChild(i).gameObject.SetActive(false);
-            }
-            else
-            {
-                buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
-            }
-        }  
+                if(buttonsContainer.transform.GetChild(i).gameObject.tag == "meterUsuario")
+                {
+                    buttonsContainer.transform.GetChild(i).gameObject.SetActive(false);
+                }
+                else
+                {
+                    buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }  
+        //}
+        //else
+        //{
+        //    errMessage.GetComponent<Text>().GetComponent<Text>().text = "ERROR";
+        //}
+
     }
 
     public void logoutUser([SerializeField] GameObject buttonsContainer)
@@ -95,8 +145,8 @@ public class InitialMenu : MonoBehaviour
         //Salir del juego
         Application.Quit();
 
-        //Salir del editor
-        UnityEditor.EditorApplication.isPlaying = false;
+        //Salir del editor, version ordenador
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void abrirPanel([SerializeField] GameObject panel)

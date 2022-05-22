@@ -9,6 +9,7 @@ public class specialInteractions : MonoBehaviour
     private GameObject spawnManager;
     private GameObject decisionManager;
     private GameObject duplicate;
+    private GameObject joyButtonA;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +18,13 @@ public class specialInteractions : MonoBehaviour
         spawnManager = GameObject.FindWithTag("spawnManager");
         decisionManager = GameObject.FindWithTag("DecisionManager");
         duplicate = GameObject.FindWithTag("Duplicate");
+        joyButtonA = GameObject.FindWithTag("buttonA");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerInRange && Input.GetKeyDown(KeyCode.Z))
+        if(isPlayerInRange && joyButtonA.GetComponent<joystickController>().pressed)
         {
             if(player.GetComponent<PlayerController>().canMove)
             {
