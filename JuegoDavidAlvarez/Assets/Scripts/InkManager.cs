@@ -135,6 +135,7 @@ public class InkManager : MonoBehaviour
         {
             //CAMBIO DE ESCENA
             decisionManager.GetComponent<DecisionManager>().sceneActual++;
+            decisionManager.GetComponent<DecisionManager>().updateDatabase();
             SceneManager.LoadSceneAsync("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual.ToString());
         }
         else

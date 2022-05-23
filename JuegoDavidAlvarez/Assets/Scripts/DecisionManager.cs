@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Firebase.Firestore;
+
 
 public class DecisionManager : MonoBehaviour
 {
     //public string[] listaVariables = ["huevoGallina","marMontania"];
     //public string[] listaValores = ["",""];
+    FirebaseFirestore db;
+    public string usuActual = "";
     public int sceneActual = 1;
     ArrayList listaVariables = new ArrayList();
     ArrayList listaValores = new ArrayList();
@@ -70,6 +74,8 @@ public class DecisionManager : MonoBehaviour
 
     void Start()
     {
+        db = FirebaseFirestore.DefaultInstance;
+
         listaVariables.Add("huevoGallina"); //0
         listaVariables.Add("marMontania"); //1
         listaVariables.Add("targetHit"); //2
@@ -105,6 +111,32 @@ public class DecisionManager : MonoBehaviour
     {
         Debug.Log("el getValue del decisionManager devuelve "+this.listaValores[listaVariables.IndexOf(nom)].ToString());
         return this.listaValores[listaVariables.IndexOf(nom)].ToString();
+    }
+
+    public void updateDatabase()
+    {
+        DocumentReference usuRef = db.Collection("Registro").Document(usuActual);
+        db.RunTransactionAsync(transaction =>
+            {
+                return transaction.GetSnapshotAsync(usuRef).ContinueWith((snapshotTask) =>
+                {
+                    DocumentSnapshot snapshot = snapshotTask.Result;
+                    //long newPopulation = snapshot.GetValue<long>("Population") + 1;
+                    Dictionary<string, object> updates = new Dictionary<string, object>
+                    {   
+                        { "sceneActual", sceneActual.ToString() },
+                        { "huevoGallina", this.listaValores[listaVariables.IndexOf("huevoGallina")].ToString() },
+                        { "marMontania", this.listaValores[listaVariables.IndexOf("marMontania")].ToString() },
+                        { "targetHit", this.listaValores[listaVariables.IndexOf("targetHit")].ToString() },
+                        { "guardaSecreto", this.listaValores[listaVariables.IndexOf("guardaSecreto")].ToString() },
+                        { "conejitosEncontrados", this.listaValores[listaVariables.IndexOf("conejitosEncontrados")].ToString() },
+                        { "hablaViejaEscena2", this.listaValores[listaVariables.IndexOf("hablaViejaEscena2")].ToString() },
+                        { "sirenaHablaPirata", this.listaValores[listaVariables.IndexOf("sirenaHablaPirata")].ToString() },
+                        { "superadasDuplicator", this.listaValores[listaVariables.IndexOf("superadasDuplicator")].ToString() }
+                    };
+                    transaction.Update(usuRef, updates);
+                });
+            });
     }
 
 }
