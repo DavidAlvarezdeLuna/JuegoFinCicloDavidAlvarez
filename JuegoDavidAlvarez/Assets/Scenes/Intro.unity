@@ -968,10 +968,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dependencyStatus: 0
-  textUsu: {fileID: 0}
-  textPass: {fileID: 0}
-  errMessage: {fileID: 0}
-  buttonsContainer: {fileID: 0}
+  textUsu: {fileID: 881364239}
+  textPass: {fileID: 1537125447}
+  errMessage: {fileID: 1186248167}
+  buttonsContainer: {fileID: 2098391091}
 --- !u!1 &375008007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8588565223595147061, guid: 19c8feb9648b0e5488cfeca7a992fd26, type: 3}
@@ -1286,6 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebc33153d02746479f364256e984295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usuActual: 
   sceneActual: 1
   huevoGallina: 
   marMontania: 
@@ -2311,7 +2312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 214, y: 4.9999866}
+  m_AnchoredPosition: {x: 214, y: 5}
   m_SizeDelta: {x: -613.17694, y: -288.7255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186248169
@@ -3202,7 +3203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6057244177538447756, guid: 19c8feb9648b0e5488cfeca7a992fd26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: cargarPartida
+      value: loadDocument
       objectReference: {fileID: 0}
     - target: {fileID: 6057244177538447756, guid: 19c8feb9648b0e5488cfeca7a992fd26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

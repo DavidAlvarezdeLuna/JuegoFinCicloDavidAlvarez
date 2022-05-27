@@ -97,6 +97,11 @@ public class NPCDialog : MonoBehaviour
                 Destroy(GameObject.FindWithTag("sirena3"));
             }
 
+            if(this.tag == "standScene4")
+            {
+                player.GetComponent<PlayerController>().canShoot = true;
+            }
+
         }
     }
 

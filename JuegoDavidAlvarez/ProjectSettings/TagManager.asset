@@ -33,6 +33,9 @@ TagManager:
   - controllerCanvas
   - panelError
   - meterPass
+  - standScene4
+  - fontScene4
+  - caveEntry
   layers:
   - Default
   - TransparentFX

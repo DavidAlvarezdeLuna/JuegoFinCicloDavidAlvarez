@@ -11,8 +11,8 @@ public class DecisionManager : MonoBehaviour
     FirebaseFirestore db;
     public string usuActual = "";
     public int sceneActual = 1;
-    ArrayList listaVariables = new ArrayList();
-    ArrayList listaValores = new ArrayList();
+    public ArrayList listaVariables = new ArrayList();
+    public ArrayList listaValores = new ArrayList();
     
     //0
     public string huevoGallina = "";

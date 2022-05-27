@@ -75,9 +75,10 @@ public class LinearMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("star")){
-            Destroy(collision.gameObject);
             Destroy(gameObject);
-            Debug.Log("Impactoooo");
+            Destroy(collision.gameObject);
+            
+            //Debug.Log("Impactoooo");
 
             spawnManager.GetComponent<SpawnManager>().destroyedTargets++;
             spawnManager.GetComponent<SpawnManager>().targetHit++;

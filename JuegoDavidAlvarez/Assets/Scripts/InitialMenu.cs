@@ -24,7 +24,9 @@ public class InitialMenu : MonoBehaviour
     [SerializeField] private GameObject errMessage;
     [SerializeField] GameObject buttonsContainer;
 
-    private bool cargarUsu = false;
+    private bool registroUsu = false;
+    private bool loginUsu = false;
+    private bool canLoadScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,15 +51,26 @@ public class InitialMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cargarUsu)
+        if(registroUsu || loginUsu)
         {
-            cargarUsu = false;
             abrirMenuUsuario();
-            createDocument();
+            if(registroUsu)
+            {
+                createDocument();
+            }
             decisionManager.GetComponent<DecisionManager>().usuActual = textUsu.GetComponent<Text>().text;
             textUsu.GetComponent<Text>().text = "";
             textPass.GetComponent<Text>().text = "";
             
+            registroUsu = false;
+            loginUsu = false;
+        }
+
+        if(canLoadScene)
+        {
+            canLoadScene = false;
+            Debug.Log("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual);
+            SceneManager.LoadSceneAsync("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual);
         }
     }
 
@@ -87,11 +100,11 @@ public class InitialMenu : MonoBehaviour
 
         if(task.IsCompleted)
         {
-            Debug.Log(cargarUsu);
-            cargarUsu = true;
+            Debug.Log(loginUsu);
+            loginUsu = true;
             
             Debug.Log("ISCOMPLETED");
-            Debug.Log(cargarUsu);
+            Debug.Log(loginUsu);
         }
 
         Firebase.Auth.FirebaseUser newUser = task.Result;
@@ -125,11 +138,11 @@ public class InitialMenu : MonoBehaviour
 
             if(task.IsCompleted)
             {
-                Debug.Log(cargarUsu);
-                cargarUsu = true;
+                Debug.Log(registroUsu);
+                registroUsu = true;
                 
                 Debug.Log("ISCOMPLETED");
-                Debug.Log(cargarUsu);
+                Debug.Log(registroUsu);
             }
 
             // Firebase user has been created.
@@ -160,12 +173,11 @@ public class InitialMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("Scene1");
     }
 
-        public void cargarPartida()
+    public void cargarPartida()
     {
-        //COMPROBAR SI EL USUARIO Y LA CONTRASEÑA INTRODUCIDOS COINCIDEN CON LA BASE DE DATOS
-        //SI NO COINCIDEN
-            //LANZAR MENSAJE DE ERROR
-        //SI COINCIDEN
+        //LO HACE LOADDOCUMENT()
+        //loadDocument();
+
             //CARGAR LAS VARIABLES ALMACENADAS EN FIREBASE, DEL USUARIO, EN EL SCENEMANAGER
             //SceneManager.LoadSceneAsync(decisionManager.GetComponent<DecisionManager>().sceneActual);
 
@@ -224,7 +236,7 @@ public class InitialMenu : MonoBehaviour
     {
         db = FirebaseFirestore.DefaultInstance;
         DocumentReference docRef = db.Collection("Registro").Document(textUsu.GetComponent<Text>().text);
-        Dictionary<string, object> city = new Dictionary<string, object>
+        Dictionary<string, object> reg = new Dictionary<string, object>
         {
             { "sceneActual", "1" },
             { "huevoGallina", "" },
@@ -237,8 +249,49 @@ public class InitialMenu : MonoBehaviour
             { "superadasDuplicator", "" }
 
         };
-        docRef.SetAsync(city).ContinueWithOnMainThread(task => {
+        docRef.SetAsync(reg).ContinueWithOnMainThread(task => {
                 Debug.Log("Saved user in database");
+        });
+    } 
+
+    public void loadDocument()
+    {
+        db = FirebaseFirestore.DefaultInstance;
+        DocumentReference docRef = db.Collection("Registro").Document(decisionManager.GetComponent<DecisionManager>().usuActual);
+        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+        DocumentSnapshot snapshot = task.Result;
+        if (snapshot.Exists) 
+        {
+            Debug.Log("Document data for "+ snapshot.Id+" document:");
+            Dictionary<string, object> reg = snapshot.ToDictionary();
+            foreach (KeyValuePair<string, object> pair in reg) 
+            {
+                if(pair.Key != "sceneActual")
+                {
+                    Debug.Log(pair.Key + ": "+ pair.Value);
+                    decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf(pair.Key)] = pair.Value.ToString();
+                    Debug.Log(pair.Key + ": "+ pair.Value + " cargado");
+                    if(pair.Key == "conejitosEncontrados")
+                    {
+                        decisionManager.GetComponent<DecisionManager>().conejitosEncontrados = int.Parse(pair.Value.ToString());
+                    }
+                }
+                else
+                {
+                    decisionManager.GetComponent<DecisionManager>().sceneActual = int.Parse(pair.Value.ToString());
+                }
+
+            }
+            Debug.Log("canLoad es "+canLoadScene);
+            canLoadScene = true;
+            Debug.Log("canLoad es "+canLoadScene);
+
+        } 
+        else 
+        {
+            Debug.Log("Document "+snapshot.Id+" does not exist!");
+        }
         });
     } 
 

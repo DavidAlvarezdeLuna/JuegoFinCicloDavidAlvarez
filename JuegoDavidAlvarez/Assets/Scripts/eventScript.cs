@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,11 +40,11 @@ public class eventScript : MonoBehaviour
             if(player.GetComponent<PlayerController>().canMove)
             {
                 dialogueImage.sprite = characterPortrait;
-                Debug.Log("Evento con tag: "+this.tag+" y player canFinishScene es "+player.GetComponent<PlayerController>().canFinishScene);
+                //Debug.Log("Evento con tag: "+this.tag+" y player canFinishScene es "+player.GetComponent<PlayerController>().canFinishScene);
 
                 if(this.tag == "endDayEvent" && player.GetComponent<PlayerController>().canFinishScene)
                 {
-                    Debug.Log("Acabamos escena");
+                    //Debug.Log("Acabamos escena");
                     player.GetComponent<PlayerController>().canMove = false;
                     inkManager.GetComponent<InkManager>().StartStory(inkJsonAsset, "", false, "endDayEvent");
                     player.GetComponent<PlayerController>().canFinishScene = false;
@@ -52,15 +54,25 @@ public class eventScript : MonoBehaviour
                 {
                     if(this.tag == "evento")
                     {
-                        Debug.Log("Seguimos en escena");
+                        //Debug.Log("Seguimos en escena");
                         player.GetComponent<PlayerController>().canMove = false;
                         inkManager.GetComponent<InkManager>().StartStory(inkJsonAsset, "", false, "evento");
                         Destroy(this);
                     }
-                    else
+                    //else
+                    //{
+                        //Debug.Log("No se cumplen condiciones de escena");
+                    //}
+
+                    if(this.tag == "caveEntry")
                     {
-                        Debug.Log("No se cumplen condiciones de escena");
+                        Vector3 playerPos;
+                        playerPos = new Vector3(-140f, -18f , player.gameObject.transform.position.z);
+
+                        player.gameObject.transform.position = playerPos;
+                        Destroy(this);
                     }
+
                 }
                 //dialogueImage.enabled = false;
                 
