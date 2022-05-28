@@ -36,6 +36,8 @@ TagManager:
   - standScene4
   - fontScene4
   - caveEntry
+  - crystalRoomEntry
+  - crystal
   layers:
   - Default
   - TransparentFX

@@ -28,6 +28,8 @@ public class NPCDialog : MonoBehaviour
 
     private string personTag;
 
+    //[SerializeField] private GameObject endDayEvent;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -100,6 +102,13 @@ public class NPCDialog : MonoBehaviour
             if(this.tag == "standScene4")
             {
                 player.GetComponent<PlayerController>().canShoot = true;
+                inkManager.GetComponent<InkManager>().peopleTalked = 0;
+            }
+
+            if (this.tag == "crystal")
+            {
+                inkManager.GetComponent<InkManager>().peopleTalked = 0;
+                player.GetComponent<PlayerController>().canFinishScene = true;
             }
 
         }

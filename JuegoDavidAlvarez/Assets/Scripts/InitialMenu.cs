@@ -246,7 +246,9 @@ public class InitialMenu : MonoBehaviour
             { "conejitosEncontrados", "0" },
             { "hablaViejaEscena2", "No" },
             { "sirenaHablaPirata", "No" },
-            { "superadasDuplicator", "" }
+            { "superadasDuplicator", "" },
+            { "zombiesHit", "0" },
+            { "magiaLiberada", "No" }
 
         };
         docRef.SetAsync(reg).ContinueWithOnMainThread(task => {

@@ -83,7 +83,7 @@ public class moveStar : MonoBehaviour
         float comparex = Math.Abs(this.transform.position.x - player.transform.position.x);
         float comparey = Math.Abs(this.transform.position.y - player.transform.position.y);
 
-        if (comparex > 15 || comparey > 15)
+        if (comparex > 15 || comparey > 5)
         {
             Destroy(gameObject);
         }

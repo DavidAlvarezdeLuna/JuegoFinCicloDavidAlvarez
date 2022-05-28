@@ -55,6 +55,17 @@ public class DecisionManager : MonoBehaviour
     //juego Duplicator, escena3
     //fases superadas en el juego del duplicator
 
+    //8
+    public string zombiesHit = "0";
+    //juego zombies, escena4
+    //numero de zombies golpeados por los proyectiles (maximo 30)
+    public int zombiesCount = 0;
+
+    //9
+    public string magiaLiberada = "No";
+    //cueva, escena5
+    //cambia a Si si se toca el cristal con el dedo anular
+
     //AQUI SE AÑADEN LAS VARIABLES
 
 
@@ -84,7 +95,9 @@ public class DecisionManager : MonoBehaviour
         listaVariables.Add("hablaViejaEscena2"); //5
         listaVariables.Add("sirenaHablaPirata"); //6
         listaVariables.Add("superadasDuplicator"); //7
-        
+        listaVariables.Add("zombiesHit"); //8
+        listaVariables.Add("magiaLiberada"); //9
+
 
         listaValores.Add("");
         listaValores.Add("");
@@ -94,6 +107,9 @@ public class DecisionManager : MonoBehaviour
         listaValores.Add("No");
         listaValores.Add("No");
         listaValores.Add("");
+        listaValores.Add("0");
+        listaValores.Add("No");
+
     }
 
 
@@ -121,7 +137,6 @@ public class DecisionManager : MonoBehaviour
                 return transaction.GetSnapshotAsync(usuRef).ContinueWith((snapshotTask) =>
                 {
                     DocumentSnapshot snapshot = snapshotTask.Result;
-                    //long newPopulation = snapshot.GetValue<long>("Population") + 1;
                     Dictionary<string, object> updates = new Dictionary<string, object>
                     {   
                         { "sceneActual", sceneActual.ToString() },
@@ -132,7 +147,9 @@ public class DecisionManager : MonoBehaviour
                         { "conejitosEncontrados", this.listaValores[listaVariables.IndexOf("conejitosEncontrados")].ToString() },
                         { "hablaViejaEscena2", this.listaValores[listaVariables.IndexOf("hablaViejaEscena2")].ToString() },
                         { "sirenaHablaPirata", this.listaValores[listaVariables.IndexOf("sirenaHablaPirata")].ToString() },
-                        { "superadasDuplicator", this.listaValores[listaVariables.IndexOf("superadasDuplicator")].ToString() }
+                        { "superadasDuplicator", this.listaValores[listaVariables.IndexOf("superadasDuplicator")].ToString() },
+                        { "zombiesHit", this.listaValores[listaVariables.IndexOf("zombiesHit")].ToString() },
+                        { "magiaLiberada", this.listaValores[listaVariables.IndexOf("magiaLiberada")].ToString() }
                     };
                     transaction.Update(usuRef, updates);
                 });

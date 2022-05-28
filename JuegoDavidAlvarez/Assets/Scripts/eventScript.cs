@@ -22,6 +22,8 @@ public class eventScript : MonoBehaviour
 
     private GameObject inkManager;
 
+    private GameObject decisionManager;
+
     //private int scene = 1;
 
 
@@ -30,6 +32,7 @@ public class eventScript : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         inkManager = GameObject.FindWithTag("InkManager");
+        decisionManager = GameObject.FindWithTag("DecisionManager");
     }
 
     // Update is called once per frame
@@ -68,6 +71,17 @@ public class eventScript : MonoBehaviour
                     {
                         Vector3 playerPos;
                         playerPos = new Vector3(-140f, -18f , player.gameObject.transform.position.z);
+
+                        player.gameObject.transform.position = playerPos;
+                        Destroy(this);
+                    }
+
+                    if (this.tag == "crystalRoomEntry")
+                    {
+                        Vector3 playerPos;
+                        playerPos = new Vector3(-142f, 83f, player.gameObject.transform.position.z);
+                        player.GetComponent<PlayerController>().canShoot = false;
+                        decisionManager.GetComponent<DecisionManager>().actualizarValor("zombiesHit", decisionManager.GetComponent<DecisionManager>().zombiesCount.ToString());
 
                         player.gameObject.transform.position = playerPos;
                         Destroy(this);
