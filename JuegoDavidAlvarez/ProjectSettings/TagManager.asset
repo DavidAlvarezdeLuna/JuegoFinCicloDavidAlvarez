@@ -38,6 +38,8 @@ TagManager:
   - caveEntry
   - crystalRoomEntry
   - crystal
+  - viejaMisteriosa5
+  - viejaTransformada5
   layers:
   - Default
   - TransparentFX

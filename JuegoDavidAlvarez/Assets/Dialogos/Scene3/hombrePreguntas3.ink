@@ -21,7 +21,8 @@ Confío en que comprenderás la razón cuando te vayas de aqui...
 Se cuenta que en esta ciudad hay un pasadizo subterraneo. En el interior de este, se encuentra una fuente de energia vital
 Que fue sellada hace mas de mil años por nuestros antepasados, esperando a ser liberada cuando la magia de este mundo se empiece a agotar
 LLevo un tiempo intentando encontrar ese pasadizo, pero me temo que también esta sellado.
-Unos escritos antiguos detallan que para desbloquear el sello, es necesario que un humano que busque la verdad proyecte la magia hacia el sello...
+Unos escritos antiguos detallan que para desbloquear el sello 
+Es necesario que un humano que busque la verdad proyecte la magia hacia el sello...
 Tengo razones para creer que el momento designado por nuestros antepasados ha llegado... Necesito dar con la clave
 -> END
 
