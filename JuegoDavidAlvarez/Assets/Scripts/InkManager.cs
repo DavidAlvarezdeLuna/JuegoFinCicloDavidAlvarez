@@ -134,9 +134,18 @@ public class InkManager : MonoBehaviour
         if(personTag == "endDayEvent")
         {
             //CAMBIO DE ESCENA
-            decisionManager.GetComponent<DecisionManager>().sceneActual++;
-            decisionManager.GetComponent<DecisionManager>().updateDatabase();
-            SceneManager.LoadSceneAsync("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual.ToString());
+            if(SceneManager.GetActiveScene().name == "Scene5")
+            {
+                decisionManager.GetComponent<DecisionManager>().sceneActual++;
+                decisionManager.GetComponent<DecisionManager>().updateDatabase();
+                SceneManager.LoadSceneAsync("Intro");
+            }
+            else
+            {
+                decisionManager.GetComponent<DecisionManager>().sceneActual++;
+                decisionManager.GetComponent<DecisionManager>().updateDatabase();
+                SceneManager.LoadSceneAsync("Scene" + decisionManager.GetComponent<DecisionManager>().sceneActual.ToString());
+            }          
         }
         else
         {

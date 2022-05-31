@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class eventScript : MonoBehaviour
 {
@@ -45,7 +45,12 @@ public class eventScript : MonoBehaviour
                 dialogueImage.sprite = characterPortrait;
                 //Debug.Log("Evento con tag: "+this.tag+" y player canFinishScene es "+player.GetComponent<PlayerController>().canFinishScene);
 
-                if(this.tag == "endDayEvent" && player.GetComponent<PlayerController>().canFinishScene)
+                if(SceneManager.GetActiveScene().name == "Scene5" && this.tag == "endDayEvent" && inkManager.GetComponent<InkManager>().peopleTalked >= 9)
+                {
+                    player.GetComponent<PlayerController>().canFinishScene = true;
+                }
+
+                if (this.tag == "endDayEvent" && player.GetComponent<PlayerController>().canFinishScene)
                 {
                     //Debug.Log("Acabamos escena");
                     player.GetComponent<PlayerController>().canMove = false;

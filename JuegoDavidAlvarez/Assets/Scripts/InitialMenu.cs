@@ -212,7 +212,18 @@ public class InitialMenu : MonoBehaviour
             }
             else
             {
-                buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
+                if(buttonsContainer.transform.GetChild(i).gameObject.tag == "botonContinuar")
+                {
+                    if(decisionManager.GetComponent<DecisionManager>().sceneActual != 6)
+                    {
+                        buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                
             }
         }
     }

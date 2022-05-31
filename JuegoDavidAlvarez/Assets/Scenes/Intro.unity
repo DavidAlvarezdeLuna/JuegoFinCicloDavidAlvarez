@@ -1296,6 +1296,9 @@ MonoBehaviour:
   hablaViejaEscena2: No
   sirenaHablaPirata: No
   superadasDuplicator: 
+  zombiesHit: 0
+  zombiesCount: 0
+  magiaLiberada: No
 --- !u!4 &479558890
 Transform:
   m_ObjectHideFlags: 0
@@ -3220,6 +3223,10 @@ PrefabInstance:
     - target: {fileID: 8588565223595147061, guid: 19c8feb9648b0e5488cfeca7a992fd26, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588565223595147061, guid: 19c8feb9648b0e5488cfeca7a992fd26, type: 3}
+      propertyPath: m_TagString
+      value: botonContinuar
       objectReference: {fileID: 0}
     - target: {fileID: 8982327071105357977, guid: 19c8feb9648b0e5488cfeca7a992fd26, type: 3}
       propertyPath: m_Pivot.x
