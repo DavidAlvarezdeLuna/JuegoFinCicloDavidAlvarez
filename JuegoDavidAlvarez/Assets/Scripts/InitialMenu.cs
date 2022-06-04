@@ -10,9 +10,6 @@ using Firebase.Extensions;
 
 public class InitialMenu : MonoBehaviour
 {
-
-    //[SerializeField] private GameObject creditosPanel;
-    //[SerializeField] private GameObject resultadosPanel;
     private GameObject decisionManager;
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;    
@@ -27,6 +24,12 @@ public class InitialMenu : MonoBehaviour
     private bool registroUsu = false;
     private bool loginUsu = false;
     private bool canLoadScene = false;
+    private bool cargarResultados = false;
+    private bool errorRegistro = false;
+    private bool errorLogin = false;
+
+    [SerializeField] private GameObject panelNoVer;
+    [SerializeField] private GameObject resultadosPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -53,24 +56,59 @@ public class InitialMenu : MonoBehaviour
     {
         if(registroUsu || loginUsu)
         {
+            textUsu.GetComponent<Text>().text = "";
+            textPass.GetComponent<Text>().text = "";
             abrirMenuUsuario();
             if(registroUsu)
             {
                 createDocument();
             }
             decisionManager.GetComponent<DecisionManager>().usuActual = textUsu.GetComponent<Text>().text;
-            textUsu.GetComponent<Text>().text = "";
-            textPass.GetComponent<Text>().text = "";
             
             registroUsu = false;
             loginUsu = false;
+            errMessage.transform.GetChild(0).GetComponent<Text>().text = "Usuario: "+decisionManager.GetComponent<DecisionManager>().usuActual;
         }
 
         if(canLoadScene)
         {
             canLoadScene = false;
-            Debug.Log("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual);
-            SceneManager.LoadSceneAsync("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual);
+            if(decisionManager.GetComponent<DecisionManager>().sceneActual != 6)
+            {
+                loadDocument();
+                SceneManager.LoadSceneAsync("Scene" + decisionManager.GetComponent<DecisionManager>().sceneActual);
+            }
+            else
+            {
+                errMessage.transform.GetChild(0).GetComponent<Text>().text = "Partida finalizada. Selecciona Nueva partida para comenzar una nueva";
+            }
+            //Debug.Log("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual); 
+        }
+
+        if (cargarResultados)
+        {
+            cargarResultados = false;
+            if (decisionManager.GetComponent<DecisionManager>().sceneActual != 6)
+            {
+                panelNoVer.gameObject.SetActive(true);
+            }
+            for(int i=0; i<decisionManager.GetComponent<DecisionManager>().listaValores.Count; i++)
+            {
+                resultadosPanel.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = decisionManager.GetComponent<DecisionManager>().listaValores[i].ToString();
+            }
+            resultadosPanel.gameObject.SetActive(true);
+        }
+
+        if (errorRegistro)
+        {
+            errorRegistro = false;
+            errMessage.transform.GetChild(0).GetComponent<Text>().text = "Error. El usuario ya existe";
+        }
+
+        if (errorLogin)
+        {
+            errorLogin = false;
+            errMessage.transform.GetChild(0).GetComponent<Text>().text = "Error. Usuario o contraseña incorrecto";
         }
     }
 
@@ -90,10 +128,12 @@ public class InitialMenu : MonoBehaviour
     {
         FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
         if (task.IsCanceled) {
+            errorLogin = true;
             Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
             return;
         }
         if (task.IsFaulted) {
+            errorLogin = true;
             Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
             return;
         }
@@ -105,6 +145,7 @@ public class InitialMenu : MonoBehaviour
             
             Debug.Log("ISCOMPLETED");
             Debug.Log(loginUsu);
+            errMessage.transform.GetChild(0).GetComponent<Text>().text = "Sesión iniciada con éxito";
         }
 
         Firebase.Auth.FirebaseUser newUser = task.Result;
@@ -123,26 +164,27 @@ public class InitialMenu : MonoBehaviour
 
         if(textUsu.GetComponent<Text>().text.Length > 0 && textPass.GetComponent<Text>().text.Length >= 8)
         {
-            errMessage.transform.GetChild(0).GetComponent<Text>().text = "entra if";
+            //errMessage.transform.GetChild(0).GetComponent<Text>().text = "entra if";
             FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
             if (task.IsCanceled) {
+                errorRegistro = true;
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
-                errMessage.transform.GetChild(0).GetComponent<Text>().text = "canceled";
                 return;
             }
             if (task.IsFaulted) {
+                errorRegistro = true;
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                errMessage.transform.GetChild(0).GetComponent<Text>().text = "create error";
                 return;
             }
 
             if(task.IsCompleted)
             {
-                Debug.Log(registroUsu);
+                //Debug.Log(registroUsu);
                 registroUsu = true;
                 
-                Debug.Log("ISCOMPLETED");
-                Debug.Log(registroUsu);
+                //Debug.Log("ISCOMPLETED");
+                //Debug.Log(registroUsu);
+                errMessage.transform.GetChild(0).GetComponent<Text>().text = "Registrado con éxito";
             }
 
             // Firebase user has been created.
@@ -152,18 +194,17 @@ public class InitialMenu : MonoBehaviour
                 
             });
 
-            
-
         }
         else
         {
-            errMessage.transform.GetChild(0).GetComponent<Text>().text = "ERROR";
+            errMessage.transform.GetChild(0).GetComponent<Text>().text = "El usuario debe ser un correo y la contraseña tener al menos 8 caracteres";
         }
 
     }
 
     public void logoutUser([SerializeField] GameObject buttonsContainer)
     {
+        errMessage.transform.GetChild(0).GetComponent<Text>().text = "";
         abrirMenuLogin();
     }
 
@@ -186,6 +227,7 @@ public class InitialMenu : MonoBehaviour
     public void salirJuego()
     {
         //Salir del juego
+        Debug.Log("SALIR DEL JUEGO");
         Application.Quit();
 
         //Salir del editor, version ordenador
@@ -194,12 +236,59 @@ public class InitialMenu : MonoBehaviour
 
     public void abrirPanel([SerializeField] GameObject panel)
     {
-        panel.SetActive(true);
+        if(panel.tag == "creditosPanel")
+        {
+            panel.SetActive(true);
+        }
+        
+        if(panel.tag == "resultadosPanel")
+        {
+            db = FirebaseFirestore.DefaultInstance;
+            DocumentReference docRef = db.Collection("Registro").Document(decisionManager.GetComponent<DecisionManager>().usuActual);
+            docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+            {
+                DocumentSnapshot snapshot = task.Result;
+                if (snapshot.Exists)
+                {
+                    Debug.Log("Document data for " + snapshot.Id + " document:");
+                    Dictionary<string, object> reg = snapshot.ToDictionary();
+                    foreach (KeyValuePair<string, object> pair in reg)
+                    {
+                        if (pair.Key != "sceneActual")
+                        {
+                            Debug.Log(pair.Key + ": " + pair.Value);
+                            decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf(pair.Key)] = pair.Value.ToString();
+                            Debug.Log(pair.Key + ": " + pair.Value + " cargado");
+                            if (pair.Key == "conejitosEncontrados")
+                            {
+                                decisionManager.GetComponent<DecisionManager>().conejitosEncontrados = int.Parse(pair.Value.ToString());
+                            }
+                        }
+                        else
+                        {
+                            decisionManager.GetComponent<DecisionManager>().sceneActual = int.Parse(pair.Value.ToString());
+                        }
+
+                    }                
+                    cargarResultados = true;
+                }
+                else
+                {
+                    Debug.Log("Document " + snapshot.Id + " does not exist!");
+                }
+            });
+        }
+        
     }
 
     public void cerrarPanel([SerializeField] GameObject panel)
     {
         panel.SetActive(false);
+
+        if(panel.tag == "resultadosPanel")
+        {
+            panelNoVer.gameObject.SetActive(false);
+        }
     }
 
     public void abrirMenuUsuario()
@@ -212,18 +301,7 @@ public class InitialMenu : MonoBehaviour
             }
             else
             {
-                if(buttonsContainer.transform.GetChild(i).gameObject.tag == "botonContinuar")
-                {
-                    if(decisionManager.GetComponent<DecisionManager>().sceneActual != 6)
-                    {
-                        buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
-                    }
-                }
-                else
-                {
-                    buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
-                }
-                
+                buttonsContainer.transform.GetChild(i).gameObject.SetActive(true);
             }
         }
     }

@@ -41,6 +41,8 @@ TagManager:
   - viejaMisteriosa5
   - viejaTransformada5
   - botonContinuar
+  - resultadosPanel
+  - panelNoVer
   layers:
   - Default
   - TransparentFX
