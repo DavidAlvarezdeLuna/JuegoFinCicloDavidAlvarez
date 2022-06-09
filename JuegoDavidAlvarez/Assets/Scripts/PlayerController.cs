@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public Joystick joystick;
     private GameObject joyButtonB;
+    private GameObject joyButtonPause;
 
     public bool canMove = true;
     public bool isWalking = false;
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public bool canPlayDuplicateGame = false;
     public bool playingDuplicateGame = false;
 
+    [SerializeField] private GameObject panelPausa;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         joystick = FindObjectOfType<Joystick>();
         joyButtonB = GameObject.FindWithTag("buttonB");
+        joyButtonPause = GameObject.FindWithTag("buttonPause");
     }
 
     // Update is called once per frame
@@ -98,8 +103,15 @@ public class PlayerController : MonoBehaviour
                 }
                             
             }
-        
-        }
-        
+
+            if (joyButtonPause.GetComponent<joystickController>().pressed)
+            {
+                if (!canShoot)
+                {
+                    panelPausa.SetActive(true);
+                }        
+            }
+        }     
     }
+
 }

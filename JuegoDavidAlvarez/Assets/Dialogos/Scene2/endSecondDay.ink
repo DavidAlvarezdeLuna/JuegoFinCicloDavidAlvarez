@@ -1,4 +1,4 @@
 Este pueblo... De alguna forma, es al mismo tiempo pacífico y agotador...
 A ver que me ha preparado la mujer de la posada esta noche...
-Esta muy rico... La carne es... tiene un tacto diferente, no se
-Bueno, me voy a dormir... Mañana será otro día
+Está muy rico... La carne es... tiene un tacto diferente, no sé.
+Bueno, me voy a dormir... Mañana será otro día.

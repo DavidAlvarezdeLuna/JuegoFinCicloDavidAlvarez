@@ -1,6 +1,6 @@
 Ohjojo...
 Veo un jovencito que no conozco
-Dime chico, ¿Que te trae por aqui?
+Dime chico, ¿Qué te trae por aquí?
 *** Voy a tener que pasar la noche aqui
 -> knot_1
 *** He decidido pasar la noche aqui
@@ -13,20 +13,19 @@ Dime chico, ¿Que te trae por aqui?
 -> continuar
 
 === continuar ===
-No me referia a eso, no... Queria saber la razon que te ha acercado a nuestro pueblo
-Te lo pregunto otra vez, ¿Que te trae por aqui?
+No me refería a eso, no... Quería saber la razón que te ha acercado a nuestro pueblo. Te lo pregunto otra vez, ¿Qué te trae por aquí?
 *** Investigaba un extraño suceso
 -> knot_3
 
 === knot_3 ===
-Vaya, parece interesante... Me gustaria saber mas
-Ya es muy tarde... Me acuesto temprano, ¿sabes?
-Espero que me cuentes ese suceso en mas detalle
-Buenas noches
+Vaya, parece interesante... Me gustaría saber más
+Ya es muy tarde... Me acuesto temprano, ¿Sabes?
+Espero que mañana me cuentes ese suceso en más detalle.
+Buenas noches.
 -> END
 
 === After ===
-Ya es muy tarde... Me acuesto temprano, ¿sabes?
-Espero que me cuentes ese suceso en mas detalle
-Buenas noches
+Ya es muy tarde... Me acuesto temprano, ¿Sabes?
+Espero que mañana me cuentes ese suceso en más detalle.
+Buenas noches.
 -> END

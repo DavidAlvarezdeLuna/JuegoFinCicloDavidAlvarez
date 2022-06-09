@@ -3,7 +3,7 @@ VAR huevoGallina = ""
 -> decision
 
 === decision ===
-Cual fue primero, ¿El huevo o la gallina?
+Cuál fue primero, ¿El huevo o la gallina?
 *** El huevo
 -> knot_1
 *** La gallina
@@ -11,22 +11,22 @@ Cual fue primero, ¿El huevo o la gallina?
 
 === knot_1 ===
 ~huevoGallina = "Huevo"
-Aja... ya veo
+Ajá... ya veo.
 -> continuar
 
 === knot_2 ===
 ~huevoGallina = "Gallina"
-Aja... ya veo
+Ajá... ya veo.
 -> continuar
 
 === continuar ===
 { huevoGallina == "Huevo": Huevo dices...}
 { huevoGallina == "Gallina": Entonces la gallina...}
-Perdona, no lo puedo evitar
-Me dedico a investigar... muchas cosas
-Encantado de conocerte, viajero
-Si necesitas algo, no dudes en pedirme ayuda
-¡Adios!
+Perdona, no lo puedo evitar.
+Me dedico a investigar... muchas cosas.
+Encantado de conocerte, viajero.
+Si necesitas algo, no dudes en pedirme ayuda.
+¡Adiós!
 -> END
 
 === After ===

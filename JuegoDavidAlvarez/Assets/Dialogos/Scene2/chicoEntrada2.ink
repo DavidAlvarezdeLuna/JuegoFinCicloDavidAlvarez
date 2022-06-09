@@ -1,21 +1,21 @@
 ¡¡Bienvenido de nuevo, viajero!!
 ¡Ninguna novedad!
-Espero que estes disfrutando de tu estancia
+Espero que estés disfrutando de tu estancia
 ***¿Esperas a alguien?
 -> option1
-***Siempre estas en la entrada
+***Siempre estás en la entrada
 -> option2
 
 === option1 ===
-Eeeh, no!
-Pero a veces llegan viajeros como tu, asi que... Que menos que recibirlos, ¿No?
-***Pensaba que no venian a menudo
-Ya, bueno... Es una vieja costumbre, supongo
+Eeeh, ¡No!
+Pero a veces llegan viajeros como tú, así que... Alguien tiene que recibirlos, ¿No?
+***Pensaba que no venía visita a menudo
+Ya, bueno... Es una vieja costumbre, supongo...
 -> continue
 
 === option2 ===
-Es una vieja costumbre
-Pero mira, a veces llegais viajeros como tu, asi que aqui os recibo
+Es una vieja costumbre.
+Pero mira, a veces llegais viajeros como tú, así que aquí os recibo.
 -> continue
 
 === continue ===

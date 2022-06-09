@@ -5,6 +5,7 @@ using UnityEngine;
 public class fontBehavior : MonoBehaviour
 {
     private bool canBeMoved = true;
+    private bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,16 @@ public class fontBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isMoving)
+        {
+            this.gameObject.transform.Translate(Vector3.up * Time.deltaTime * 2);
+        }
+
+        if (this.gameObject.transform.position.y >= 22f)
+        {
+            canBeMoved = false;
+            isMoving = false;
+        }
 
     }
 
@@ -22,10 +33,7 @@ public class fontBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("star") && canBeMoved)
         {
-            Vector3 fontPos;
-            fontPos = new Vector3(gameObject.transform.position.x, 21f , -1.5f);
-            gameObject.transform.position = fontPos;
-            canBeMoved = false;
+            isMoving = true;   
         }
 
     }

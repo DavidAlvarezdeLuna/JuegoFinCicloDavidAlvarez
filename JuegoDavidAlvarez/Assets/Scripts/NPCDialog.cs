@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class NPCDialog : MonoBehaviour
 {
     [SerializeField] private GameObject dialogPanel;
@@ -30,12 +32,17 @@ public class NPCDialog : MonoBehaviour
 
     //[SerializeField] private GameObject endDayEvent;
 
+    private GameObject sirena3;
+    private bool sirenaCanMove;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         inkManager = GameObject.FindWithTag("InkManager");
         decisionManager = GameObject.FindWithTag("DecisionManager");
         joyButtonA = GameObject.FindWithTag("buttonA");
+
+        sirena3 = GameObject.FindWithTag("sirena3");
     }
 
     // Update is called once per frame
@@ -87,16 +94,17 @@ public class NPCDialog : MonoBehaviour
                     inkManager.GetComponent<InkManager>().peopleTalked --;
                     Debug.Log("Se mueve el objeto "+gameObject.tag.ToString());
                     //gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
-                    gameObject.transform.Translate(-7,0,0);
+                    //gameObject.transform.Translate(new Vector2(6,gameObject.transform.position.y) * Time.deltaTime * 3);
+                    sirenaCanMove = true;
                 }
-                
+
                 decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata = "Si";
                 decisionManager.GetComponent<DecisionManager>().actualizarValor("sirenaHablaPirata", decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata);
             }
 
             if(this.tag == "pirata3" && decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata == "No")
             {
-                Destroy(GameObject.FindWithTag("sirena3"));
+                sirena3.SetActive(false);
             }
 
             if(this.tag == "standScene4")
@@ -112,6 +120,20 @@ public class NPCDialog : MonoBehaviour
             }
 
         }
+
+        if(SceneManager.GetActiveScene().name == "Scene3")
+        {
+            if (sirenaCanMove)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * 4);
+            }
+
+            if (sirena3.transform.position.x <= 6)
+            {
+                sirenaCanMove = false;
+            }
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

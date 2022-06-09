@@ -4,9 +4,9 @@ VAR conejitosEncontrados = ""
 
 === start ===
 ¡Hombre tio, que pasa!
-¡Te ha comido la lengua el conejo, o que pasa!
-Por fin puedo abrir la boca, y no hacer ese ruidito, chaval
-¡AHEM! Me presento
+¡Te ha comido la lengua el conejo, o qué pasa!
+Por fin puedo abrir la boca, y no hacer ese ruidito, chaval.
+¡AHEM! Me presento.
 Soy el conejito, pero no como los de tu mundo, esos no son inteligentes...
 Mi especie es superior, ¡Hasta nos ponemos camisetas molonas!
 Te dijo la chavala esa que me buscaras, ¡La verdad es que el escondite es la caña!
@@ -20,30 +20,30 @@ Te dijo la chavala esa que me buscaras, ¡La verdad es que el escondite es la ca
 
 
 === conejitos0 ===
-Y has pasado de mi, que me den ganas de llorar, asi te lo digo
-Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré
+Y has pasado de mí, que me dan ganas de llorar, así te lo digo.
+Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré.
 -> END
 
 === conejitos1 ===
-Y te ha dado para presentarte y nada mas, vaya modales
-Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré
+Y te ha dado para presentarte y nada mas, vaya modales.
+Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré.
 -> END
 
 === conejitos2 ===
 Pero me parece que he ganado yo, ¡TOMA YA!
-Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré
+Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré.
 -> END
 
 === conejitos3 ===
-No me encontraste una vez, bien jugado
+No me encontraste una vez, bien jugado.
 Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré
 -> END
 
 === conejitos4 ===
-¡Pero siempre me encuentras, tio! Y yo que pensaba que esconderme detrás del banco era la mejor idea que habia tenido....
-Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré
+¡Pero siempre me encuentras, tio! Y yo que pensaba que esconderme detrás del banco era la mejor idea que había tenido....
+Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré.
 -> END
 
 === After ===
-Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré
+Ale, pues si quieres volver a buscarme, porque no me vas a encontrar, aqui estaré.
 -> END

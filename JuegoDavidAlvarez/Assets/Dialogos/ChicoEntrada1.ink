@@ -1,7 +1,7 @@
 -> start_knot
 
 === start_knot ===
-Hola viajero!! Bienvenido a este pueblecito
+¡¡Hola viajero!! Bienvenido a este pueblecito.
 Dime... ¿Necesitas algo?
 *** Voy a pasar la noche aqui
 -> knot_1
@@ -13,13 +13,13 @@ Sin problema, ¡Tenemos una posada muy acogedora!
 -> continuar
 
 === knot_2 ===
-Vaya... Podemos ayudarte a solucionarlo, pero te recomiendo descansar
+Vaya... Podemos ayudarte a solucionarlo, pero te recomiendo descansar.
 -> continuar
 
 === continuar ===
 La posada esta cerca, en el primer cruce a la izquierda.
 Habla con la mujer que esta en fuera. ¡Es la dueña!
-Te va a encantar, ya lo verás
+Te va a encantar, ya lo verás.
 ¡Nos vemos mañana!
 -> END
 
@@ -27,6 +27,6 @@ Te va a encantar, ya lo verás
 === After ===
 La posada esta cerca, en el primer cruce a la izquierda.
 Habla con la mujer que esta en fuera. ¡Es la dueña!
-Te va a encantar, ya lo verás
+Te va a encantar, ya lo verás.
 ¡Nos vemos mañana!
 -> END

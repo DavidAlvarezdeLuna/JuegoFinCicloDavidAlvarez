@@ -43,6 +43,7 @@ TagManager:
   - botonContinuar
   - resultadosPanel
   - panelNoVer
+  - buttonPause
   layers:
   - Default
   - TransparentFX
