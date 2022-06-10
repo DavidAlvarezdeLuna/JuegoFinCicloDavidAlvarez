@@ -58,7 +58,7 @@ public class specialInteractions : MonoBehaviour
 
                 if(this.tag == "conejito")
                 {
-                    //Hacer sonidito
+                    player.GetComponent<PlayerController>().playRabbitSound();
                     decisionManager.GetComponent<DecisionManager>().conejitosEncontrados++;
                     decisionManager.GetComponent<DecisionManager>().actualizarValor("conejitosEncontrados", decisionManager.GetComponent<DecisionManager>().conejitosEncontrados.ToString());
                     Destroy(gameObject);

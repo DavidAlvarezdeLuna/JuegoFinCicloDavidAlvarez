@@ -33,10 +33,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject panelPausa;
 
+    public AudioClip starSound;
+    public AudioClip zombieSound;
+    public AudioClip rabbitSound;
+    private AudioSource sou;
 
     // Start is called before the first frame update
     void Start()
     {
+        sou = GetComponent<AudioSource>();
         playerSpeed = 7;
         anim = GetComponent<Animator>();
         joystick = FindObjectOfType<Joystick>();
@@ -100,6 +105,7 @@ public class PlayerController : MonoBehaviour
                     joyButtonB.GetComponent<joystickController>().pressed = false;
                     Vector3 v3 = new Vector3(this.transform.position.x,this.transform.position.y,-1);        
                     Instantiate(star, v3, this.transform.rotation);
+                    sou.PlayOneShot(starSound, 0.5f);
                 }
                             
             }
@@ -112,6 +118,21 @@ public class PlayerController : MonoBehaviour
                 }        
             }
         }     
+    }
+
+    public void playZombieSound()
+    {
+        sou.PlayOneShot(zombieSound, 1f);
+    }
+
+    public void playRabbitSound()
+    {
+        sou.PlayOneShot(rabbitSound, 0.5f);
+    }
+
+    public void playStarSound()
+    {
+        sou.PlayOneShot(starSound, 0.5f);
     }
 
 }

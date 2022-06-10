@@ -8,7 +8,7 @@ public class zombieBehavior : MonoBehaviour
     private GameObject decisionManager;
     public GameObject player;
     private Rigidbody2D enemyRb;
-    public float speed = 10;
+    public float speed = 4;
     private Vector2 movement;
     private bool canFollowPlayer = false;
     // Start is called before the first frame update
@@ -53,10 +53,9 @@ public class zombieBehavior : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 decisionManager.GetComponent<DecisionManager>().zombiesCount++;
+                player.GetComponent<PlayerController>().playZombieSound();
             }
 
-            //spawnManager.GetComponent<SpawnManager>().destroyedTargets++;
-            //spawnManager.GetComponent<SpawnManager>().targetHit++;
         }
 
     }

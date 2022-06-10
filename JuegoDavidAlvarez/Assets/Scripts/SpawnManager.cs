@@ -16,10 +16,14 @@ public class SpawnManager : MonoBehaviour
     private int contTargets;
     public int destroyedTargets;
     public int targetHit;
+
+    public AudioClip breakTargetSound;
+    private AudioSource sou;
     // Start is called before the first frame update
 
     void Start()
     {
+        sou = GetComponent<AudioSource>();
         player = GameObject.FindWithTag("Player");
         decisionManager = GameObject.FindWithTag("DecisionManager");
         InvokeRepeating("spawnRandomTarget", startDelay, spawnInterval);
@@ -82,4 +86,10 @@ public class SpawnManager : MonoBehaviour
         }
         
     }
+
+    public void playBreakSound()
+    {
+        sou.PlayOneShot(breakTargetSound, 0.5f);
+    }
+
 }

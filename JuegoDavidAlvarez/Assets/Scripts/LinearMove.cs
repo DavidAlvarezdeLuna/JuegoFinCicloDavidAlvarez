@@ -77,11 +77,11 @@ public class LinearMove : MonoBehaviour
         if (collision.gameObject.CompareTag("star")){
             Destroy(gameObject);
             Destroy(collision.gameObject);
-            
-            //Debug.Log("Impactoooo");
 
             spawnManager.GetComponent<SpawnManager>().destroyedTargets++;
             spawnManager.GetComponent<SpawnManager>().targetHit++;
+
+            spawnManager.GetComponent<SpawnManager>().playBreakSound();
         }
 
     }

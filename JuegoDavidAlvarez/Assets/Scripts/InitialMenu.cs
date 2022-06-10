@@ -31,9 +31,12 @@ public class InitialMenu : MonoBehaviour
     [SerializeField] private GameObject panelNoVer;
     [SerializeField] private GameObject resultadosPanel;
 
+    public GameObject mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.FindWithTag("MainCamera");
         decisionManager = GameObject.FindWithTag("DecisionManager");
         //Check that all of the necessary dependencies for Firebase are present on the system
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -126,6 +129,8 @@ public class InitialMenu : MonoBehaviour
 
     public void loginUser([SerializeField] GameObject buttonsContainer)
     {
+        mainCamera.GetComponent<clickSound>().playClickSound();
+
         FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
         if (task.IsCanceled) {
             errorLogin = true;
@@ -159,10 +164,12 @@ public class InitialMenu : MonoBehaviour
 
     public void registerUser()
     {
+        mainCamera.GetComponent<clickSound>().playClickSound();
+
         //INTRODUCIR EN FIREBASE EL USUARIO NUEVO
         //LO TENDRE ALMACENADO HASTA QUE SE CAMBIE
 
-        if(textUsu.GetComponent<Text>().text.Length > 0 && textPass.GetComponent<Text>().text.Length >= 8)
+        if (textUsu.GetComponent<Text>().text.Length > 0 && textPass.GetComponent<Text>().text.Length >= 8)
         {
             //errMessage.transform.GetChild(0).GetComponent<Text>().text = "entra if";
             FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
@@ -204,12 +211,15 @@ public class InitialMenu : MonoBehaviour
 
     public void logoutUser([SerializeField] GameObject buttonsContainer)
     {
+        mainCamera.GetComponent<clickSound>().playClickSound();
+
         errMessage.transform.GetChild(0).GetComponent<Text>().text = "";
         abrirMenuLogin();
     }
 
     public void nuevaPartida()
     {
+        mainCamera.GetComponent<clickSound>().playClickSound();
         //SI EXISTIA EL USUARIO, PONER LAS VARIABLES EN SUS VALORES INICIALES (EN REALIDAD SIEMPRE SE PONDRAN LOS VALORES INICIALES)
         SceneManager.LoadSceneAsync("Scene1");
     }
@@ -226,6 +236,7 @@ public class InitialMenu : MonoBehaviour
 
     public void salirJuego()
     {
+        mainCamera.GetComponent<clickSound>().playClickSound();
         //Salir del juego
         Debug.Log("SALIR DEL JUEGO");
         Application.Quit();
@@ -236,7 +247,9 @@ public class InitialMenu : MonoBehaviour
 
     public void abrirPanel([SerializeField] GameObject panel)
     {
-        if(panel.tag == "creditosPanel")
+        mainCamera.GetComponent<clickSound>().playClickSound();
+
+        if (panel.tag == "creditosPanel")
         {
             panel.SetActive(true);
         }
@@ -283,6 +296,7 @@ public class InitialMenu : MonoBehaviour
 
     public void cerrarPanel([SerializeField] GameObject panel)
     {
+        mainCamera.GetComponent<clickSound>().playClickSound();
         panel.SetActive(false);
 
         if(panel.tag == "resultadosPanel")
@@ -293,7 +307,7 @@ public class InitialMenu : MonoBehaviour
 
     public void abrirMenuUsuario()
     {
-        for(int i=0; i<buttonsContainer.transform.childCount; i++)
+        for (int i=0; i<buttonsContainer.transform.childCount; i++)
         {
             if(buttonsContainer.transform.GetChild(i).gameObject.tag == "meterUsuario")
             {

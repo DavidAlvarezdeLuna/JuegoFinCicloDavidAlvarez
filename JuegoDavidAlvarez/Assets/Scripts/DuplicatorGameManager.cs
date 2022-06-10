@@ -31,6 +31,7 @@ public class DuplicatorGameManager : MonoBehaviour
         {
             if(log1.GetComponent<LogBehavior>().isPlayerInRange && log2.GetComponent<LogBehavior>().isPlayerInRange && !phaseDone)
             {
+                player.GetComponent<PlayerController>().playStarSound();
                 phaseDone = true;
                 switch (phase)
                 {

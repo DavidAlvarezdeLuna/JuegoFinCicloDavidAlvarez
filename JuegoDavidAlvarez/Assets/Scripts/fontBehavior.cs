@@ -7,10 +7,13 @@ public class fontBehavior : MonoBehaviour
     private bool canBeMoved = true;
     private bool isMoving = false;
 
+    public AudioClip quakeSound;
+    private AudioSource sou;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sou = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -18,7 +21,7 @@ public class fontBehavior : MonoBehaviour
     {
         if(isMoving)
         {
-            this.gameObject.transform.Translate(Vector3.up * Time.deltaTime * 2);
+            this.gameObject.transform.Translate(Vector3.up * Time.deltaTime * 0.7f);
         }
 
         if (this.gameObject.transform.position.y >= 22f)
@@ -33,7 +36,8 @@ public class fontBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("star") && canBeMoved)
         {
-            isMoving = true;   
+            isMoving = true;
+            sou.PlayOneShot(quakeSound, 0.5f);
         }
 
     }
