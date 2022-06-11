@@ -18,22 +18,7 @@ public class moveStar : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         anim = player.GetComponent<Animator>();
         joystick = FindObjectOfType<Joystick>();
-        /*if(anim.GetFloat("Horizontal") > 0)
-        {
-            direccion = "der";
-        }
-        if(anim.GetFloat("Horizontal") < 0)
-        {
-            direccion = "izq";
-        }
-        if(anim.GetFloat("Vertical") > 0)
-        {
-            direccion = "arr";
-        }
-        if(anim.GetFloat("Vertical") < 0)
-        {
-            direccion = "aba";
-        }*/
+
         Debug.Log(joystick.Horizontal.ToString()+" "+joystick.Vertical.ToString());
 
         if(joystick.Horizontal > 0f && joystick.Horizontal > joystick.Vertical)
@@ -88,14 +73,5 @@ public class moveStar : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("target")){
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            Debug.Log("Impactoooo");
-        }
-
-    }*/
 
 }

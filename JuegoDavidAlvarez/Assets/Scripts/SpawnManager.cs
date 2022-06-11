@@ -78,13 +78,9 @@ public class SpawnManager : MonoBehaviour
                     spawnPos = new Vector3(99, 11 , -1);
                     Instantiate(target, spawnPos, target.transform.rotation);
                     break;
-
             }
-
             contTargets++;
-
         }
-        
     }
 
     public void playBreakSound()

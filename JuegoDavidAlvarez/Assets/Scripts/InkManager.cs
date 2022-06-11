@@ -30,7 +30,7 @@ public class InkManager : MonoBehaviour
     public string valorVariable;
 
     //variable que registra con cuanta gente se ha hablado
-    //Cuando es 7 y hablas con la mujer de la posada, se pasa a la siguiente escena
+    //Cuando alcanza una cantidad determinada se puede pasar a la siguiente escena
     public int peopleTalked = 0;
 
     //Variable que comprueba si ya he interactuado con un personaje al menos una vez
@@ -70,13 +70,11 @@ public class InkManager : MonoBehaviour
             }
             else
             {
-                //Que solo la mujerPosada recoja esta variable
+                //Que solo la mujerPosada compruebe con cuantos se ha hablado
                 if(personTag == "mujerPosada")
                 {
-                    //Debug.Log("Es la mujer de la posada");
                     if(((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || (SceneManager.GetActiveScene().name == "Scene1" && peopleTalked >= 7)) && !player.GetComponent<PlayerController>().canFinishScene)
                     {
-                        //Debug.Log("Inicia TodosHablados");
                         _story.ChoosePathString("todosHablados");
                         peopleTalked = 0;
                         player.GetComponent<PlayerController>().canFinishScene = true;
@@ -84,14 +82,12 @@ public class InkManager : MonoBehaviour
                     }
                     else
                     {
-                        //Debug.Log("Es la mujer de la posada que inicia After");
                         _story.ChoosePathString("After");
                     }
                     
                 }
                 else
                 {
-                    //Debug.Log("Otro inicia After");
                     _story.ChoosePathString("After");
                 }
 
@@ -99,8 +95,6 @@ public class InkManager : MonoBehaviour
         }
         
         textContainer.SetActive(true);
-        //joyButtonA.GetComponent<joystickController>().pressed = false;
-        //controllerCanvas.SetActive(false);
         DisplayNextLine();
         Debug.Log("peopleTalked: "+peopleTalked);
     }
@@ -128,7 +122,6 @@ public class InkManager : MonoBehaviour
     private void EndStory()
     {
         textContainer.SetActive(false);
-        //controllerCanvas.SetActive(true);
         player.GetComponent<PlayerController>().canMove = true;
         //Si el dialogo maneja una variable que se quiere registrar
         if(personTag == "endDayEvent")

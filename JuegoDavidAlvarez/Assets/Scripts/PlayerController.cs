@@ -53,50 +53,27 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var rigidbody = GetComponent<Rigidbody2D>();
-
         if(canMove)
         {
-
             forwardInput = Input.GetAxis("Vertical");
             horizontalInput = Input.GetAxis("Horizontal");
-
             if(joystick.Horizontal != 0 || joystick.Vertical != 0)
             {
-                /*if(Input.GetKey(KeyCode.LeftShift))
-                {
-                    playerSpeed = 8;
-                }
-                else
-                {
-                    playerSpeed = 5;
-                }*/
-
                 if(!isWalking)
                 {
                     isWalking = true;
                     anim.SetBool("isWalking",true);
                 }
-
                 anim.SetFloat("Horizontal", joystick.Horizontal);
-                anim.SetFloat("Vertical", joystick.Vertical);
-
-                //this.transform.Translate(Vector3.up * playerSpeed * Time.deltaTime * forwardInput);
-                //this.transform.Translate(Vector3.right * playerSpeed * Time.deltaTime * horizontalInput);
-            
+                anim.SetFloat("Vertical", joystick.Vertical);   
                 this.transform.Translate(Vector3.up * playerSpeed * Time.deltaTime * joystick.Vertical);
                 this.transform.Translate(Vector3.right * playerSpeed * Time.deltaTime * joystick.Horizontal);
-            
-
-                //rigidbody.velocity = new Vector3(joystick.Horizontal * playerSpeed, joystick.Vertical * playerSpeed);
-
             }
             else
             {
                 isWalking = false;
                 anim.SetBool("isWalking",false);
-            }
-
-            
+            }        
 
             if (joyButtonB.GetComponent<joystickController>().pressed || Input.GetKey(KeyCode.Space))
             {
@@ -106,8 +83,7 @@ public class PlayerController : MonoBehaviour
                     Vector3 v3 = new Vector3(this.transform.position.x,this.transform.position.y,-1);        
                     Instantiate(star, v3, this.transform.rotation);
                     sou.PlayOneShot(starSound, 0.5f);
-                }
-                            
+                }               
             }
 
             if (joyButtonPause.GetComponent<joystickController>().pressed)

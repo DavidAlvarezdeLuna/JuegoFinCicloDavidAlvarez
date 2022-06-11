@@ -148,7 +148,6 @@ public class InitialMenu : MonoBehaviour
             Debug.Log(loginUsu);
             loginUsu = true;
             
-            Debug.Log("ISCOMPLETED");
             Debug.Log(loginUsu);
             errMessage.transform.GetChild(0).GetComponent<Text>().text = "Sesión iniciada con éxito";
         }
@@ -157,8 +156,6 @@ public class InitialMenu : MonoBehaviour
         Debug.LogFormat("User signed in successfully: {0} ({1})",
             newUser.DisplayName, newUser.UserId);
         });
-        //COMPROBAR SI EL USUARIO Y LA CONTRASEÑA EXISTEN EN FIREBASE
-        //LO TENDRE ALMACENADO HASTA QUE SE CAMBIE
 
     }
 
@@ -166,12 +163,8 @@ public class InitialMenu : MonoBehaviour
     {
         mainCamera.GetComponent<clickSound>().playClickSound();
 
-        //INTRODUCIR EN FIREBASE EL USUARIO NUEVO
-        //LO TENDRE ALMACENADO HASTA QUE SE CAMBIE
-
         if (textUsu.GetComponent<Text>().text.Length > 0 && textPass.GetComponent<Text>().text.Length >= 8)
         {
-            //errMessage.transform.GetChild(0).GetComponent<Text>().text = "entra if";
             FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
             if (task.IsCanceled) {
                 errorRegistro = true;
@@ -186,11 +179,7 @@ public class InitialMenu : MonoBehaviour
 
             if(task.IsCompleted)
             {
-                //Debug.Log(registroUsu);
                 registroUsu = true;
-                
-                //Debug.Log("ISCOMPLETED");
-                //Debug.Log(registroUsu);
                 errMessage.transform.GetChild(0).GetComponent<Text>().text = "Registrado con éxito";
             }
 
@@ -206,7 +195,6 @@ public class InitialMenu : MonoBehaviour
         {
             errMessage.transform.GetChild(0).GetComponent<Text>().text = "El usuario debe ser un correo y la contraseña tener al menos 8 caracteres";
         }
-
     }
 
     public void logoutUser([SerializeField] GameObject buttonsContainer)
@@ -386,12 +374,8 @@ public class InitialMenu : MonoBehaviour
                 {
                     decisionManager.GetComponent<DecisionManager>().sceneActual = int.Parse(pair.Value.ToString());
                 }
-
             }
-            Debug.Log("canLoad es "+canLoadScene);
             canLoadScene = true;
-            Debug.Log("canLoad es "+canLoadScene);
-
         } 
         else 
         {

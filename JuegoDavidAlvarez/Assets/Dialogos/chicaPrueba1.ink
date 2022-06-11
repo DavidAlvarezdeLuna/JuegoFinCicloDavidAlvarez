@@ -3,14 +3,14 @@
 Es muy... ¡Natural, muy bonito!
 ¡Espero que te guste!
 Ah, y tenemos un animalito muy mono por aqui, ¡Me encanta, voy a verle todos los dias! Intenta decirle algo, te lo recomiendo.
-¿Entonces vas a pasar la noche aqui?
+¿Entonces vas a pasar la noche aquí?
 *** Si
 -> knot_1
 *** No
 -> knot_2
 
 === knot_1 ===
-¡Claro, ya lo sabia, es muy tarde ya!
+¡Claro, ya lo sabía, es muy tarde ya!
 -> continuar
 
 === knot_2 ===

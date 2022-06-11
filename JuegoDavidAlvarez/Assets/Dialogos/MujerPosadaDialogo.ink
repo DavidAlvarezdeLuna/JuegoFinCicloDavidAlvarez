@@ -5,7 +5,7 @@ Buenas tardes, soy la dueña de esta posada.
 -> knot_cont
 
 === knot_cont ===
-¿Vienes a hospedarte? También ofrecemos comida
+¿Vienes a hospedarte? También ofrecemos comida.
 *** Sí, muchas gracias
 -> knot_1
 *** Sí, ¿me puede decir el precio?
