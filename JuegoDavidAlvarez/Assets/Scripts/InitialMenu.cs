@@ -209,7 +209,6 @@ public class InitialMenu : MonoBehaviour
     public void nuevaPartida()
     {
         mainCamera.GetComponent<clickSound>().playClickSound();
-        //SI EXISTIA EL USUARIO, PONER LAS VARIABLES EN SUS VALORES INICIALES (EN REALIDAD SIEMPRE SE PONDRAN LOS VALORES INICIALES)
         SceneManager.LoadSceneAsync("Scene1");
     }
 

@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(destroyedTargets == 30)
+        if(destroyedTargets >= 30)
         {
             decisionManager.GetComponent<DecisionManager>().actualizarValor("targetHit",targetHit.ToString());
             destroyedTargets = 0;
