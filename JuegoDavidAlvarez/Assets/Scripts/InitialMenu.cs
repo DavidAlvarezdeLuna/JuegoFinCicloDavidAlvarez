@@ -30,6 +30,7 @@ public class InitialMenu : MonoBehaviour
 
     [SerializeField] private GameObject panelNoVer;
     [SerializeField] private GameObject resultadosPanel;
+    
 
     public GameObject mainCamera;
 
@@ -49,7 +50,7 @@ public class InitialMenu : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
+                //Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
     }
@@ -122,7 +123,7 @@ public class InitialMenu : MonoBehaviour
 
     private void InitializeFirebase()
     {
-        Debug.Log("Setting up Firebase Auth");
+        //Debug.Log("Setting up Firebase Auth");
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
     }
@@ -134,12 +135,12 @@ public class InitialMenu : MonoBehaviour
         FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
         if (task.IsCanceled) {
             errorLogin = true;
-            Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+            //Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
             return;
         }
         if (task.IsFaulted) {
             errorLogin = true;
-            Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+            //Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
             return;
         }
 
@@ -153,8 +154,8 @@ public class InitialMenu : MonoBehaviour
         }
 
         Firebase.Auth.FirebaseUser newUser = task.Result;
-        Debug.LogFormat("User signed in successfully: {0} ({1})",
-            newUser.DisplayName, newUser.UserId);
+        //Debug.LogFormat("User signed in successfully: {0} ({1})",
+            //newUser.DisplayName, newUser.UserId);
         });
 
     }
@@ -168,12 +169,12 @@ public class InitialMenu : MonoBehaviour
             FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
             if (task.IsCanceled) {
                 errorRegistro = true;
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
+                //Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
                 return;
             }
             if (task.IsFaulted) {
                 errorRegistro = true;
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                //Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
 
@@ -185,8 +186,8 @@ public class InitialMenu : MonoBehaviour
 
             // Firebase user has been created.
             Firebase.Auth.FirebaseUser newUser = task.Result;
-            Debug.LogFormat("Firebase user created successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+            //Debug.LogFormat("Firebase user created successfully: {0} ({1})",
+                //newUser.DisplayName, newUser.UserId);
                 
             });
 
@@ -210,16 +211,6 @@ public class InitialMenu : MonoBehaviour
         mainCamera.GetComponent<clickSound>().playClickSound();
         //SI EXISTIA EL USUARIO, PONER LAS VARIABLES EN SUS VALORES INICIALES (EN REALIDAD SIEMPRE SE PONDRAN LOS VALORES INICIALES)
         SceneManager.LoadSceneAsync("Scene1");
-    }
-
-    public void cargarPartida()
-    {
-        //LO HACE LOADDOCUMENT()
-        //loadDocument();
-
-            //CARGAR LAS VARIABLES ALMACENADAS EN FIREBASE, DEL USUARIO, EN EL SCENEMANAGER
-            //SceneManager.LoadSceneAsync(decisionManager.GetComponent<DecisionManager>().sceneActual);
-
     }
 
     public void salirJuego()
@@ -257,7 +248,7 @@ public class InitialMenu : MonoBehaviour
                     {
                         if (pair.Key != "sceneActual")
                         {
-                            Debug.Log(pair.Key + ": " + pair.Value);
+                            //Debug.Log(pair.Key + ": " + pair.Value);
                             decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf(pair.Key)] = pair.Value.ToString();
                             Debug.Log(pair.Key + ": " + pair.Value + " cargado");
                             if (pair.Key == "conejitosEncontrados")
@@ -275,7 +266,7 @@ public class InitialMenu : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Document " + snapshot.Id + " does not exist!");
+                    //Debug.Log("Document " + snapshot.Id + " does not exist!");
                 }
             });
         }
@@ -343,7 +334,7 @@ public class InitialMenu : MonoBehaviour
 
         };
         docRef.SetAsync(reg).ContinueWithOnMainThread(task => {
-                Debug.Log("Saved user in database");
+                //Debug.Log("Saved user in database");
         });
     } 
 
@@ -356,13 +347,13 @@ public class InitialMenu : MonoBehaviour
         DocumentSnapshot snapshot = task.Result;
         if (snapshot.Exists) 
         {
-            Debug.Log("Document data for "+ snapshot.Id+" document:");
+            //Debug.Log("Document data for "+ snapshot.Id+" document:");
             Dictionary<string, object> reg = snapshot.ToDictionary();
             foreach (KeyValuePair<string, object> pair in reg) 
             {
                 if(pair.Key != "sceneActual")
                 {
-                    Debug.Log(pair.Key + ": "+ pair.Value);
+                    //Debug.Log(pair.Key + ": "+ pair.Value);
                     decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf(pair.Key)] = pair.Value.ToString();
                     Debug.Log(pair.Key + ": "+ pair.Value + " cargado");
                     if(pair.Key == "conejitosEncontrados")
@@ -379,7 +370,7 @@ public class InitialMenu : MonoBehaviour
         } 
         else 
         {
-            Debug.Log("Document "+snapshot.Id+" does not exist!");
+            //Debug.Log("Document "+snapshot.Id+" does not exist!");
         }
         });
     } 

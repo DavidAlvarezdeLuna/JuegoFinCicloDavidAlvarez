@@ -44,6 +44,7 @@ TagManager:
   - resultadosPanel
   - panelNoVer
   - buttonPause
+  - textNumEscena
   layers:
   - Default
   - TransparentFX

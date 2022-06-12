@@ -25,14 +25,16 @@ Estaba nadando...
 ¡Espera!
 Um...
 El pirata que surcó los mares... ¿Sabes quién es?
-Me gustaría hablar con él, pero habla muy alto... y no me decido
+Me gustaría hablar con él, pero su voz es muy potente... y no me decido a actuar.
 Siento que con tu ayuda... podría acercarme a él...
-Hazme un favor... Mañana estará por aquí cerca... ¿Podrías hablar conmigo antes que con él? 
+Hazme un favor... Mañana estará por aquí cerca... ¿Podrías hablar conmigo antes que con él?
+De ese modo me armaré de valor.
 -> END
 
 === After ===
 El pirata que surcó los mares... ¿Sabes quién es?
-Me gustaría hablar con él, pero habla muy alto... y no me decido
+Me gustaría hablar con él, pero su voz es muy potente... y no me decido a actuar.
 Siento que con tu ayuda... podría acercarme a él...
 Hazme un favor... Mañana estará por aquí cerca... ¿Podrías hablar conmigo antes que con él? 
+De ese modo me armaré de valor.
 -> END

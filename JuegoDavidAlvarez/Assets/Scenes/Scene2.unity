@@ -632,7 +632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238876554f3af044eb67bd2a36d98ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rabbitSound: {fileID: 0}
 --- !u!1 &224123249
 GameObject:
   m_ObjectHideFlags: 0
@@ -85927,7 +85926,6 @@ MonoBehaviour:
   _choiceButtonContainer: {fileID: 1427429541}
   _choiceButtonPrefab: {fileID: 5842937916340659586, guid: b6f9feb32a895894a8062657174f959e, type: 3}
   textContainer: {fileID: 495712699}
-  player: {fileID: 928325974}
   npc: {fileID: 0}
   joystick: {fileID: 0}
   nomVariable: 
@@ -86448,6 +86446,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 449779312242059030, guid: 09742ceed9493044484bf2294ce38006, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 449779312242059030, guid: 09742ceed9493044484bf2294ce38006, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 841721950996921021, guid: 09742ceed9493044484bf2294ce38006, type: 3}
+      propertyPath: panelPausa
+      value: 
+      objectReference: {fileID: 122489280}
+    - target: {fileID: 841721950996921021, guid: 09742ceed9493044484bf2294ce38006, type: 3}
+      propertyPath: textNumEscena
+      value: 
+      objectReference: {fileID: 2047886938}
     - target: {fileID: 1494071982261062444, guid: 09742ceed9493044484bf2294ce38006, type: 3}
       propertyPath: panelPausa
       value: 
@@ -86518,11 +86532,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09742ceed9493044484bf2294ce38006, type: 3}
---- !u!1 &928325974 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1494071982261062441, guid: 09742ceed9493044484bf2294ce38006, type: 3}
-  m_PrefabInstance: {fileID: 928325973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1026159157
 GameObject:
   m_ObjectHideFlags: 0
@@ -88783,7 +88792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36bd6f7b94e38246aa939661c724ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 928325974}
+  player: {fileID: 0}
 --- !u!81 &1819544286
 AudioListener:
   m_ObjectHideFlags: 0
@@ -106505,6 +106514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82cbf4c95cbef73428db5a4b74d43e9d, type: 3}
+--- !u!1 &2047886938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899466972619469363, guid: 82cbf4c95cbef73428db5a4b74d43e9d, type: 3}
+  m_PrefabInstance: {fileID: 2047886937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117527694
 GameObject:
   m_ObjectHideFlags: 0

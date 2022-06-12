@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,9 +39,14 @@ public class PlayerController : MonoBehaviour
     public AudioClip rabbitSound;
     private AudioSource sou;
 
+    private GameObject decisionManager;
+    [SerializeField] public GameObject textNumEscena;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        decisionManager = GameObject.FindWithTag("DecisionManager");
         sou = GetComponent<AudioSource>();
         playerSpeed = 7;
         anim = GetComponent<Animator>();
@@ -88,10 +94,14 @@ public class PlayerController : MonoBehaviour
 
             if (joyButtonPause.GetComponent<joystickController>().pressed)
             {
-                if (!canShoot)
+                if(gameObject.tag == "Player")
                 {
-                    panelPausa.SetActive(true);
-                }        
+                    if (!canShoot)
+                    {
+                        textNumEscena.GetComponent<Text>().text = decisionManager.GetComponent<DecisionManager>().sceneActual.ToString();
+                        panelPausa.SetActive(true);
+                    }
+                }
             }
         }     
     }

@@ -7,8 +7,8 @@ Que, ¿Has descansado?
 Vaya, me alegro.
 -> continue
 ***Aun dormiría mas tiempo
-Pues sí que te ha gustado la posada
-Te agradezco el halago
+Pues sí que te ha gustado la posada.
+Te agradezco el halago.
 -> continue
 
 === continue ===
@@ -21,7 +21,7 @@ Date una vuelta, y cuando hayas visitado a todos, ven a verme, te voy a preparar
 
 === todosHablados ===
     ¡Hola, mi huesped! Espero que hayas disfrutado el día.
-    Como te prometí, he preparado algo que no querría que te marchases sin probar
+    Como te prometí, he preparado algo que no querría que te marchases sin probar.
     Y lo llamo... ¡¡D- Pollo en salsa!!
     Espero que te guste.
 -> END

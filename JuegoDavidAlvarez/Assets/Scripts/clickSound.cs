@@ -21,6 +21,6 @@ public class clickSound : MonoBehaviour
 
     public void playClickSound()
     {
-        sou.PlayOneShot(click, 1f);
+        sou.PlayOneShot(click, 2f);
     }
 }

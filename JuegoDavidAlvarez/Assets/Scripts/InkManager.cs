@@ -14,7 +14,7 @@ public class InkManager : MonoBehaviour
 
     [SerializeField] private GameObject textContainer;
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
     [SerializeField] private GameObject npc;
 
     private GameObject decisionManager;
@@ -41,6 +41,7 @@ public class InkManager : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         decisionManager = GameObject.FindWithTag("DecisionManager");
         controllerCanvas = GameObject.FindWithTag("controllerCanvas");
         joystick = FindObjectOfType<Joystick>();
@@ -73,10 +74,9 @@ public class InkManager : MonoBehaviour
                 //Que solo la mujerPosada compruebe con cuantos se ha hablado
                 if(personTag == "mujerPosada")
                 {
-                    if(((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || (SceneManager.GetActiveScene().name == "Scene1" && peopleTalked >= 7)) && !player.GetComponent<PlayerController>().canFinishScene)
+                    if(((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || (SceneManager.GetActiveScene().name == "Scene1" && peopleTalked >= 7)))
                     {
                         _story.ChoosePathString("todosHablados");
-                        peopleTalked = 0;
                         player.GetComponent<PlayerController>().canFinishScene = true;
 
                     }
@@ -126,6 +126,7 @@ public class InkManager : MonoBehaviour
         //Si el dialogo maneja una variable que se quiere registrar
         if(personTag == "endDayEvent")
         {
+            peopleTalked = 0;
             //CAMBIO DE ESCENA
             if(SceneManager.GetActiveScene().name == "Scene5")
             {

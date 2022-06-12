@@ -1,9 +1,9 @@
 Ohjojo...
-Veo un jovencito que no conozco
+Veo un jovencito que no conozco.
 Dime chico, ¿Qué te trae por aquí?
-*** Voy a tener que pasar la noche aqui
+*** Voy a tener que pasar la noche aquí
 -> knot_1
-*** He decidido pasar la noche aqui
+*** He decidido pasar la noche aquí
 -> knot_2
 
 === knot_1 ===
@@ -18,7 +18,7 @@ No me refería a eso, no... Quería saber la razón que te ha acercado a nuestro
 -> knot_3
 
 === knot_3 ===
-Vaya, parece interesante... Me gustaría saber más
+Vaya, parece interesante... Me gustaría saber más.
 Ya es muy tarde... Me acuesto temprano, ¿Sabes?
 Espero que mañana me cuentes ese suceso en más detalle.
 Buenas noches.

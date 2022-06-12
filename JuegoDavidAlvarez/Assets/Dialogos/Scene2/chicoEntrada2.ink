@@ -1,6 +1,6 @@
 ¡¡Bienvenido de nuevo, viajero!!
 ¡Ninguna novedad!
-Espero que estés disfrutando de tu estancia
+Espero que estés disfrutando de tu estancia.
 ***¿Esperas a alguien?
 -> option1
 ***Siempre estás en la entrada
@@ -15,7 +15,7 @@ Ya, bueno... Es una vieja costumbre, supongo...
 
 === option2 ===
 Es una vieja costumbre.
-Pero mira, a veces llegais viajeros como tú, así que aquí os recibo.
+Pero mira, a veces llegáis viajeros como tú, así que aquí os recibo.
 -> continue
 
 === continue ===

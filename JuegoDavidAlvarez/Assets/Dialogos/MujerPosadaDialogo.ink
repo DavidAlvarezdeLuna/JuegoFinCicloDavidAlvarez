@@ -14,7 +14,7 @@ Buenas tardes, soy la dueña de esta posada.
 === knot_1 ===
 ¡¡De nada, para eso estamos!!
 Ah, y antes de que preguntes, te lo dejo gratis.
-No recibimos clientes a menudo, asi que el gusto es mío.
+No recibimos clientes a menudo, así que el gusto es mío.
 -> continuar
 
 === knot_2 ===

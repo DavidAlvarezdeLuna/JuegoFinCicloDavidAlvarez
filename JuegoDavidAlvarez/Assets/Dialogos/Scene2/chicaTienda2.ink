@@ -5,7 +5,7 @@ VAR armaMinijuego = ""
 === start ===
 ¡¡Bonjour!!
 ¡Bienvenido a mi tiendecilla!
-(Venga, cuéntale un poco de que va ésto.)
+(Venga, cuéntale un poco de que va ésto).
 Un duendecillo me pasó el negocio, sabes... ¡Soy la jefa!
 ¡Mira mira, vendo cosas muy chulas!
 ***Muy bien, compraré algo
@@ -43,7 +43,7 @@ Has elegido la varita, que mágico.
 
 === continue2 ===
 Pues great, ¡Ya puedes jugar, pero solo una vez, luego tengo que dejar todo limpio!
-Toca el puestecillo para empezar
+Toca el puestecillo para empezar.
 -> END
 
 === After ===

@@ -2,9 +2,9 @@
 ¡Bienvenido a este pueblecito!
 Es muy... ¡Natural, muy bonito!
 ¡Espero que te guste!
-Ah, y tenemos un animalito muy mono por aqui, ¡Me encanta, voy a verle todos los dias! Intenta decirle algo, te lo recomiendo.
-¿Entonces vas a pasar la noche aquí?
-*** Si
+Ah, y tenemos un animalito muy mono por aquí, ¡Me encanta, voy a verle todos los días! Intenta decirle algo, te lo recomiendo.
+¿Entonces vas a pasar la noche en la posada?
+*** Sí
 -> knot_1
 *** No
 -> knot_2

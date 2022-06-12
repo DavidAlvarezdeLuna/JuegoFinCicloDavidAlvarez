@@ -5,7 +5,7 @@
 ¿Que tal, has visto al conejillo?
 Es un poco tímido y se esconde, pero es muy bueno...
 Si te acercas a él y le hablas, hace un ruidito... ¡¡Que mono!!
-¿Te está gustando esto, lo sé? Tiene un aura especial, un aire muy puro.
+Te está gustando esto, lo sé. Tiene un aura especial, un aire muy puro.
 Eso es bueno, ¿Sabes?
 Bueno, no te entretengo más, que pases un buen día.
 ¡Hasta luego!

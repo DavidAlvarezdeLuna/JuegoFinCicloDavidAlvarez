@@ -18,22 +18,22 @@ Claro que sí... Dime, ¿Por que preguntas?
 -> continuar3
 
 === continuar3 ===
-Te costo encontrar este lugar...
+Te costó encontrar este lugar...
 ¿No puedes comunicarte con ese cachivache tuyo, verdad?
 No te preocupes, nos estamos encargando del vehículo.
-Bueno... ¿Por que no me cuentas un poco de ese suceso que me comentaste ayer?
+Bueno... ¿Por qué no me cuentas un poco de ese suceso que me comentaste ayer?
 ***Si, te cuento...
 -> continuar4
 
 === continuar4 ===
-Interesente... Entonces me dices que cerca de aquí se oyo una explosión que no ha dejado rastro
+Interesente... Entonces me dices que cerca de aquí se oyó una explosión que no ha dejado rastro.
 Y que tú eres un periodista en busca de la verdad...
-¿Pero, porque tanto interes, si no ha habido heridos?
+¿Pero, por qué tanto interés, si no ha habido heridos?
 ***La gente piensa que son magia o fantasmas
 -> continuar5
 
 === continuar5 ===
-Vaya... Es una pena que tengas tanto empeño por esa razón
+Vaya... Es una pena que tengas tanto empeño por esa razón.
 Hay cosas que no tienen explicación lógica, piénsalo...
 ***Tambien oí una voz de mujer pidiendo auxilio
 -> continuar6
@@ -42,11 +42,11 @@ Hay cosas que no tienen explicación lógica, piénsalo...
 ¿Pedia auxilio? Que misterioso...
 Espero que la encuentres pronto... Tengo el presentimiento de que estás cerca de ella.
 Todo se irá solucionando, ya verás.
-Gracias por hablar conmigo, joven. Te lo agradezco.
+Te agradezco que hayas venido a hablar conmigo, joven.
 -> END
 
 === After ===
-Gracias por hablar conmigo, joven. Te lo agradezco.
+Te agradezco que hayas venido a hablar conmigo, joven.
 -> END
 
 
