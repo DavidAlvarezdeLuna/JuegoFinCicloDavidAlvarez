@@ -1,4 +1,4 @@
-# JuegoFinCicloDavidAlvarez
+# La fuente de cristal
 
 ¡Bienvenido a la Fuente de cristal, viajero!  
 Regístrate con tu correo y ¡Comienza tu aventura!  
