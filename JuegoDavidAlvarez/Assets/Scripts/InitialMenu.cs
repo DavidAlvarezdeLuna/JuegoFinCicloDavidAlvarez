@@ -204,6 +204,8 @@ public class InitialMenu : MonoBehaviour
 
         errMessage.transform.GetChild(0).GetComponent<Text>().text = "";
         abrirMenuLogin();
+        
+
     }
 
     public void nuevaPartida()
