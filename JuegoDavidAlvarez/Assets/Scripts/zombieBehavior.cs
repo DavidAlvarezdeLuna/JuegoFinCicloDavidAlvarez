@@ -30,8 +30,6 @@ public class zombieBehavior : MonoBehaviour
             lookDirection.Normalize();
             movement = lookDirection;
             enemyRb.MovePosition(transform.position + (lookDirection * speed * Time.deltaTime));
-            //enemyRb.AddForce(lookDirection * Time.deltaTime * speed);
-
         }
 
         float comparex = Math.Abs(this.transform.position.x - player.transform.position.x);

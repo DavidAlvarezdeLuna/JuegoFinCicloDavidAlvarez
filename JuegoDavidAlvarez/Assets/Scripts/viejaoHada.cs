@@ -19,8 +19,6 @@ public class viejaoHada : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata + " " + decisionManager.GetComponent<DecisionManager>().listaValores.Count + " " + decisionManager.GetComponent<DecisionManager>().listaVariables.Count);
-        Debug.Log(decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf("magiaLiberada")]);
         if (decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf("magiaLiberada")].ToString() == "Si")
         {
             vieja.gameObject.SetActive(false);

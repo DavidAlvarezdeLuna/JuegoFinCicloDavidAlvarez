@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class InkManager : MonoBehaviour
 {
-    //[SerializeField] private TextAsset _inkJsonAsset;
     private Story _story;
     [SerializeField] private Text _textField;
 
@@ -26,10 +25,10 @@ public class InkManager : MonoBehaviour
     //Para los dialogos que registran una variable, me facilita la interaccion entre unity e ink, para almacenar decisiones
     public string nomVariable;
 
-    //Almacena el valor de la variable nomVariable, para llevarla al gamemanager
+    //Almacena el valor de la variable nomVariable, para llevarla al DecisionManager
     public string valorVariable;
 
-    //variable que registra con cuanta gente se ha hablado
+    //variable que registra con cuanta gente se ha hablado en una escena
     //Cuando alcanza una cantidad determinada se puede pasar a la siguiente escena
     public int peopleTalked = 0;
 
@@ -52,8 +51,6 @@ public class InkManager : MonoBehaviour
     {
         this.visited = visited;
         this.personTag = personTag;
-        Debug.Log("personaTag es: "+personTag);
-        //Las diferentes story se estaban entrelazando mal entre personajes si no les instanciaba la historia cada vez
         _story = new Story(inkJsonAsset.text);
 
         //Este if permite que los personajes que necesitan comprobar una variable almacenada en ink, recuperen ese valor aunque al instanciar la historia pierdan las variables
@@ -71,7 +68,7 @@ public class InkManager : MonoBehaviour
             }
             else
             {
-                //Que solo la mujerPosada compruebe con cuantos se ha hablado
+                //Que solo la mujer de la posada compruebe con cuantos se ha hablado
                 if(personTag == "mujerPosada")
                 {
                     if(((SceneManager.GetActiveScene().name == "Scene2" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayShootGame) || (SceneManager.GetActiveScene().name == "Scene3" && peopleTalked >= 7 && !player.GetComponent<PlayerController>().canPlayDuplicateGame) || (SceneManager.GetActiveScene().name == "Scene1" && peopleTalked >= 7)))
@@ -96,18 +93,17 @@ public class InkManager : MonoBehaviour
         
         textContainer.SetActive(true);
         DisplayNextLine();
-        Debug.Log("peopleTalked: "+peopleTalked);
     }
 
     public void DisplayNextLine()
     {
         if (_story.canContinue)
         {
-            string text = _story.Continue(); // gets next line
+            string text = _story.Continue();
 
-            text = text?.Trim(); // removes white space from text
+            text = text?.Trim();
 
-            _textField.text = text; // displays new text
+            _textField.text = text;
         }
         else if (_story.currentChoices.Count > 0)
         {
@@ -123,7 +119,6 @@ public class InkManager : MonoBehaviour
     {
         textContainer.SetActive(false);
         player.GetComponent<PlayerController>().canMove = true;
-        //Si el dialogo maneja una variable que se quiere registrar
         if(personTag == "endDayEvent")
         {
             peopleTalked = 0;
@@ -143,16 +138,16 @@ public class InkManager : MonoBehaviour
         }
         else
         {
-            if(nomVariable != "")
+            //Si el dialogo maneja una variable que se quiere registrar
+            if (nomVariable != "")
             {
                 //solo ocurre la primera vez que se habla con el personaje
                 if(!visited)
                 {
                     if(_story.variablesState[nomVariable].ToString() != "Null")
                     {    
-                        Debug.Log(_story.variablesState[nomVariable]);
                         valorVariable = _story.variablesState[nomVariable].ToString();
-                        //registro de la variable en DecisionManager.cs
+                        //registro la variable en DecisionManager.cs
                         decisionManager.GetComponent<DecisionManager>().actualizarValor(nomVariable,valorVariable);
                     }
                 }     
@@ -163,14 +158,13 @@ public class InkManager : MonoBehaviour
     }
     private void DisplayChoices()
     {
-        // checks if choices are already being displayed
         if (_choiceButtonContainer.GetComponentsInChildren<Button>().Length > 0) return;
 
-        for (int i = 0; i < _story.currentChoices.Count; i++) // iterates through all choices
+        for (int i = 0; i < _story.currentChoices.Count; i++)
         {
 
             var choice = _story.currentChoices[i];
-            var button = CreateChoiceButton(choice.text); // creates a choice button
+            var button = CreateChoiceButton(choice.text);
 
             button.onClick.AddListener(() => OnClickChoiceButton(choice));
         }
@@ -178,11 +172,9 @@ public class InkManager : MonoBehaviour
 
     Button CreateChoiceButton(string text)
     {
-        // creates the button from a prefab
         var choiceButton = Instantiate(_choiceButtonPrefab);
         choiceButton.transform.SetParent(_choiceButtonContainer.transform, false);
 
-        // sets text on the button
         var buttonText = choiceButton.GetComponentInChildren<Text>();
         buttonText.text = text;
 
@@ -191,9 +183,9 @@ public class InkManager : MonoBehaviour
 
     void OnClickChoiceButton(Choice choice)
     {
-        _story.ChooseChoiceIndex(choice.index); // tells ink which choice was selected
+        _story.ChooseChoiceIndex(choice.index);
         _story.Continue();
-        RefreshChoiceView(); // removes choices from the screen
+        RefreshChoiceView();
         DisplayNextLine();
     }
 

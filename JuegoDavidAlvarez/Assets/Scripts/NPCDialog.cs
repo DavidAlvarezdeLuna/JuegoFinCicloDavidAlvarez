@@ -21,16 +21,12 @@ public class NPCDialog : MonoBehaviour
     private bool didDialogueStart;
 
     private GameObject player;
-
     private GameObject inkManager;
-
     private GameObject decisionManager;
 
     private bool visited = false;
 
     private string personTag;
-
-    //[SerializeField] private GameObject endDayEvent;
 
     private GameObject sirena3;
     private bool sirenaCanMove;
@@ -41,7 +37,6 @@ public class NPCDialog : MonoBehaviour
         inkManager = GameObject.FindWithTag("InkManager");
         decisionManager = GameObject.FindWithTag("DecisionManager");
         joyButtonA = GameObject.FindWithTag("buttonA");
-
         sirena3 = GameObject.FindWithTag("sirena3");
     }
 
@@ -52,11 +47,9 @@ public class NPCDialog : MonoBehaviour
         {
             if(player.GetComponent<PlayerController>().canMove)
             {
-                //didDialogueStart = true;
                 dialogueImage.sprite = characterPortrait; 
                 player.GetComponent<PlayerController>().canMove = false;
                 inkManager.GetComponent<InkManager>().StartStory(inkJsonAsset, nomVariable, visited, personTag);
-                //player.GetComponent<PlayerController>().canMove = true;
                 visited = true;
             }
 
@@ -92,9 +85,6 @@ public class NPCDialog : MonoBehaviour
                 if(decisionManager.GetComponent<DecisionManager>().sirenaHablaPirata != "Si")
                 {
                     inkManager.GetComponent<InkManager>().peopleTalked --;
-                    Debug.Log("Se mueve el objeto "+gameObject.tag.ToString());
-                    //gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
-                    //gameObject.transform.Translate(new Vector2(6,gameObject.transform.position.y) * Time.deltaTime * 3);
                     sirenaCanMove = true;
                 }
 
@@ -142,8 +132,6 @@ public class NPCDialog : MonoBehaviour
         {
             isPlayerInRange = true;
             personTag = this.tag;
-            Debug.Log("Zona dialogo "+personTag);
-            
         }
     }
 
@@ -153,7 +141,6 @@ public class NPCDialog : MonoBehaviour
         {
             isPlayerInRange = false;
             personTag = "";
-            Debug.Log("No Zona dialogo");
         }
     }
 }

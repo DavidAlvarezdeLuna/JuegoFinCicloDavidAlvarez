@@ -28,32 +28,18 @@ public class specialInteractions : MonoBehaviour
         {
             if(player.GetComponent<PlayerController>().canMove)
             {
-                //player.GetComponent<PlayerController>().canMove = false;
-                //player.GetComponent<PlayerController>().canMove = true;
                 if(this.tag == "standScene2" && player.GetComponent<PlayerController>().canPlayShootGame)
                 {
                     player.GetComponent<PlayerController>().canShoot = true;
                     player.transform.position = new Vector3(113.5f, 6.5f, player.transform.position.z);
                     spawnManager.GetComponent<SpawnManager>().enabled = true;
-                    Debug.Log("A disparar");
-                }
-                else
-                {
-                    Debug.Log("No puedes disparar");
                 }
 
                 if(this.tag == "standScene3" && player.GetComponent<PlayerController>().canPlayDuplicateGame)
                 {
-                    //player.GetComponent<PlayerController>().canShoot = true;
                     player.transform.position = new Vector3(114f, 57f, player.transform.position.z);
-                    //spawnManager.GetComponent<SpawnManager>().enabled = true;
-                    Debug.Log("A colaborar con el duplicado!");
                     duplicate.transform.position = new Vector3(120f, 57f, player.transform.position.z);
                     player.GetComponent<PlayerController>().playingDuplicateGame = true;
-                }
-                else
-                {
-                    Debug.Log("No puedes jugar a Duplicator");
                 }
 
                 if(this.tag == "conejito")
@@ -75,8 +61,6 @@ public class specialInteractions : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log("Zona interaccion "+this.tag);
-            
         }
     }
 
@@ -85,9 +69,7 @@ public class specialInteractions : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            Debug.Log("No Zona interaccion");
         }
     }
-
 
 }

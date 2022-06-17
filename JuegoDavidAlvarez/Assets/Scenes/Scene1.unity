@@ -14891,7 +14891,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1a0fa83d5b6b34c3ba0aa78e8d91021c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -92190,7 +92190,6 @@ MonoBehaviour:
   _choiceButtonContainer: {fileID: 1911514002}
   _choiceButtonPrefab: {fileID: 5842937916340659586, guid: b6f9feb32a895894a8062657174f959e, type: 3}
   textContainer: {fileID: 806265090}
-  player: {fileID: 1738277569}
   npc: {fileID: 0}
   joystick: {fileID: 0}
   nomVariable: 
@@ -92801,6 +92800,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5718846483290270763, guid: 000a15916e6be5043b59a05160947d0b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 430
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718846483290270763, guid: 000a15916e6be5043b59a05160947d0b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718846483290270763, guid: 000a15916e6be5043b59a05160947d0b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718846483290270763, guid: 000a15916e6be5043b59a05160947d0b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5718846483360507714, guid: 000a15916e6be5043b59a05160947d0b, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -93225,7 +93240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8099580885531797960, guid: 6f63922a8d9fc694485002507074fd7b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8099580885531797960, guid: 6f63922a8d9fc694485002507074fd7b, type: 3}
       propertyPath: m_LocalRotation.w

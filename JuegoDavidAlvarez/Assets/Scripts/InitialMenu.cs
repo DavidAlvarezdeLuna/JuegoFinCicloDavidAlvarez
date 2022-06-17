@@ -48,10 +48,7 @@ public class InitialMenu : MonoBehaviour
                 //If they are avalible Initialize Firebase
                 InitializeFirebase();
             }
-            else
-            {
-                //Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
-            }
+            
         });
     }
 
@@ -86,7 +83,6 @@ public class InitialMenu : MonoBehaviour
             {
                 errMessage.transform.GetChild(0).GetComponent<Text>().text = "Partida finalizada. Selecciona Nueva partida para comenzar una nueva";
             }
-            //Debug.Log("Scene"+decisionManager.GetComponent<DecisionManager>().sceneActual); 
         }
 
         if (cargarResultados)
@@ -123,7 +119,6 @@ public class InitialMenu : MonoBehaviour
 
     private void InitializeFirebase()
     {
-        //Debug.Log("Setting up Firebase Auth");
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
     }
@@ -135,12 +130,10 @@ public class InitialMenu : MonoBehaviour
         FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
         if (task.IsCanceled) {
             errorLogin = true;
-            //Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
             return;
         }
         if (task.IsFaulted) {
             errorLogin = true;
-            //Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
             return;
         }
 
@@ -154,8 +147,7 @@ public class InitialMenu : MonoBehaviour
         }
 
         Firebase.Auth.FirebaseUser newUser = task.Result;
-        //Debug.LogFormat("User signed in successfully: {0} ({1})",
-            //newUser.DisplayName, newUser.UserId);
+
         });
 
     }
@@ -169,12 +161,10 @@ public class InitialMenu : MonoBehaviour
             FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(textUsu.GetComponent<Text>().text, textPass.GetComponent<Text>().text).ContinueWith(task => {
             if (task.IsCanceled) {
                 errorRegistro = true;
-                //Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
                 return;
             }
             if (task.IsFaulted) {
                 errorRegistro = true;
-                //Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
 
@@ -186,8 +176,6 @@ public class InitialMenu : MonoBehaviour
 
             // Firebase user has been created.
             Firebase.Auth.FirebaseUser newUser = task.Result;
-            //Debug.LogFormat("Firebase user created successfully: {0} ({1})",
-                //newUser.DisplayName, newUser.UserId);
                 
             });
 
@@ -218,10 +206,9 @@ public class InitialMenu : MonoBehaviour
     {
         mainCamera.GetComponent<clickSound>().playClickSound();
         //Salir del juego
-        Debug.Log("SALIR DEL JUEGO");
         Application.Quit();
 
-        //Salir del editor, version ordenador
+        //Salir del editor
         //UnityEditor.EditorApplication.isPlaying = false;
     }
 
@@ -249,7 +236,6 @@ public class InitialMenu : MonoBehaviour
                     {
                         if (pair.Key != "sceneActual")
                         {
-                            //Debug.Log(pair.Key + ": " + pair.Value);
                             decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf(pair.Key)] = pair.Value.ToString();
                             Debug.Log(pair.Key + ": " + pair.Value + " cargado");
                             if (pair.Key == "conejitosEncontrados")
@@ -265,10 +251,7 @@ public class InitialMenu : MonoBehaviour
                     }                
                     cargarResultados = true;
                 }
-                else
-                {
-                    //Debug.Log("Document " + snapshot.Id + " does not exist!");
-                }
+
             });
         }
         
@@ -335,7 +318,6 @@ public class InitialMenu : MonoBehaviour
 
         };
         docRef.SetAsync(reg).ContinueWithOnMainThread(task => {
-                //Debug.Log("Saved user in database");
         });
     } 
 
@@ -348,13 +330,11 @@ public class InitialMenu : MonoBehaviour
         DocumentSnapshot snapshot = task.Result;
         if (snapshot.Exists) 
         {
-            //Debug.Log("Document data for "+ snapshot.Id+" document:");
             Dictionary<string, object> reg = snapshot.ToDictionary();
             foreach (KeyValuePair<string, object> pair in reg) 
             {
                 if(pair.Key != "sceneActual")
                 {
-                    //Debug.Log(pair.Key + ": "+ pair.Value);
                     decisionManager.GetComponent<DecisionManager>().listaValores[decisionManager.GetComponent<DecisionManager>().listaVariables.IndexOf(pair.Key)] = pair.Value.ToString();
                     Debug.Log(pair.Key + ": "+ pair.Value + " cargado");
                     if(pair.Key == "conejitosEncontrados")
@@ -369,10 +349,7 @@ public class InitialMenu : MonoBehaviour
             }
             canLoadScene = true;
         } 
-        else 
-        {
-            //Debug.Log("Document "+snapshot.Id+" does not exist!");
-        }
+
         });
     } 
 

@@ -24,9 +24,6 @@ public class eventScript : MonoBehaviour
 
     private GameObject decisionManager;
 
-    //private int scene = 1;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +40,6 @@ public class eventScript : MonoBehaviour
             if(player.GetComponent<PlayerController>().canMove)
             {
                 dialogueImage.sprite = characterPortrait;
-                //Debug.Log("Evento con tag: "+this.tag+" y player canFinishScene es "+player.GetComponent<PlayerController>().canFinishScene);
 
                 if(SceneManager.GetActiveScene().name == "Scene5" && this.tag == "endDayEvent" && inkManager.GetComponent<InkManager>().peopleTalked >= 9)
                 {
@@ -52,7 +48,6 @@ public class eventScript : MonoBehaviour
 
                 if (this.tag == "endDayEvent" && player.GetComponent<PlayerController>().canFinishScene)
                 {
-                    //Debug.Log("Acabamos escena");
                     player.GetComponent<PlayerController>().canMove = false;
                     inkManager.GetComponent<InkManager>().StartStory(inkJsonAsset, "", false, "endDayEvent");
                     player.GetComponent<PlayerController>().canFinishScene = false;
@@ -62,15 +57,10 @@ public class eventScript : MonoBehaviour
                 {
                     if(this.tag == "evento")
                     {
-                        //Debug.Log("Seguimos en escena");
                         player.GetComponent<PlayerController>().canMove = false;
                         inkManager.GetComponent<InkManager>().StartStory(inkJsonAsset, "", false, "evento");
                         Destroy(this);
                     }
-                    //else
-                    //{
-                        //Debug.Log("No se cumplen condiciones de escena");
-                    //}
 
                     if(this.tag == "caveEntry")
                     {
@@ -93,14 +83,11 @@ public class eventScript : MonoBehaviour
                     }
 
                 }
-                //dialogueImage.enabled = false;
-                
-                //dialogueImage.enabled = true;
+
             }            
 
         }
     }
-
 
 
     private void OnTriggerEnter2D(Collider2D collision)

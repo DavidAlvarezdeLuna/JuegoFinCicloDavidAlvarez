@@ -8,7 +8,7 @@ Es una especie de mineral, un cristal.
 No parece de este mundo...
 Tiene una ranura, que parece diseñada para tocarla con un dedo.
 Pero, ¿Eso quiere decir que este cristal es artificial?
-¿Debo tocarlo, pero con que dedo?
+Debo tocarlo, ¿Pero con que dedo?
 ***Meñique
 -> continuar
 ***Anular

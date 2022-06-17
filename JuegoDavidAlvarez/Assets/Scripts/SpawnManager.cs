@@ -30,11 +30,6 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void OnEnable()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -54,7 +49,6 @@ public class SpawnManager : MonoBehaviour
         if(contTargets < numberTargets)
         {
             targetDirection = Random.Range(0,4);
-
             Vector3 spawnPos;
 
             switch (targetDirection)

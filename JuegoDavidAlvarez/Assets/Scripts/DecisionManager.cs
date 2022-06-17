@@ -6,8 +6,6 @@ using Firebase.Firestore;
 
 public class DecisionManager : MonoBehaviour
 {
-    //public string[] listaVariables = ["huevoGallina","marMontania"];
-    //public string[] listaValores = ["",""];
     FirebaseFirestore db;
     public string usuActual = "";
     public int sceneActual = 1;
@@ -65,8 +63,6 @@ public class DecisionManager : MonoBehaviour
     public string magiaLiberada = "No";
     //cueva, escena5
     //cambia a Si si se toca el cristal con el dedo anular
-
-    //AQUI SE AÑADEN LAS VARIABLES
 
 
     public static DecisionManager Instance;

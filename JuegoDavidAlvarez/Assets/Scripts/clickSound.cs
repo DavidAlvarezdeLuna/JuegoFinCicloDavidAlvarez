@@ -13,12 +13,6 @@ public class clickSound : MonoBehaviour
         sou = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void playClickSound()
     {
         sou.PlayOneShot(click, 2f);

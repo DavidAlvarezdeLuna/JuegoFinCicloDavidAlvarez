@@ -64,7 +64,6 @@ public class moveStar : MonoBehaviour
             this.transform.Translate(Vector3.down * Time.deltaTime * speed);
         }
         
-
         float comparex = Math.Abs(this.transform.position.x - player.transform.position.x);
         float comparey = Math.Abs(this.transform.position.y - player.transform.position.y);
 
